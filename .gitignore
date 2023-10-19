@@ -1,3 +1,4 @@
-.DS_Store
 input.css
 tailwindcss
+tailwindcss.config.js
+.DS_Store
