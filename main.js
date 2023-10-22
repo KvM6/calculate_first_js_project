@@ -51,7 +51,58 @@ const prepareDOMElements = () => {
 	calcEqual = document.querySelector("#calcEqual");
 };
 
-const prepareDOMEvents = () => {};
+const prepareDOMEvents = () => {
+	calcOne.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
+		butOne.displayValue();
+		if (opperand.char == "") {
+			butOne.getNumb();
+		} else if (opperand.char != "") {
+			butOne.getNumbTwo();
+		}
+	});
+	calcTwo.addEventListener("click", () => {
+		butTwo.displayValue();
+	});
+	calcThree.addEventListener("click", () => {
+		butThree.displayValue();
+	});
+	calcFour.addEventListener("click", () => {
+		butFour.displayValue();
+	});
+	calcFive.addEventListener("click", () => {
+		butFive.displayValue();
+	});
+	calcSix.addEventListener("click", () => {
+		butSix.displayValue();
+	});
+	calcSeven.addEventListener("click", () => {
+		butSeven.displayValue();
+	});
+	calcEight.addEventListener("click", () => {
+		butEight.displayValue();
+	});
+	calcNine.addEventListener("click", () => {
+		butNine.displayValue();
+	});
+	calcZero.addEventListener("click", () => {
+		butZero.displayValue();
+	});
+
+	calcAdd.addEventListener("click", () => {
+		showZeroValue();
+		butAdd.displayFunction();
+		butAdd.setOpperand();
+	});
+	calcReset.addEventListener("click", () => {
+		showZeroValue();
+		resetValue();
+	});
+	calcEqual.addEventListener("click", () => {
+		resultFunction();
+	});
+};
 
 function buttonValue(display) {
 	this.display = display;
@@ -86,4 +137,62 @@ const butPosNeg = new buttonFunction("+/-");
 const butReset = new buttonFunction("0");
 let opperand = new buttonFunction("");
 
+buttonValue.prototype.displayValue = function () {
+	valueString.textContent += this.display;
+};
+buttonValue.prototype.getNumb = function () {
+	butNumbOne.display += this.display;
+	butNumbOne.display = parseInt(butNumbOne.display);
+	console.log(butNumbOne.display);
+	console.log("1");
+};
+buttonValue.prototype.getNumbTwo = function () {
+	butNumbTwo.display += this.display;
+	butNumbTwo.display = parseInt(butNumbTwo.display);
+	console.log(butNumbTwo.display);
+	console.log("2");
+};
+
+buttonFunction.prototype.displayFunction = function () {
+	valueDisplay.textContent = this.char;
+	valueString.textContent = "";
+};
+buttonFunction.prototype.setOpperand = function () {
+	opperand.char = this.char;
+	console.log(opperand.char);
+};
+
+function hideZeroValue() {
+	valueDisplay.classList.add("opacity-0");
+}
+
+function showZeroValue() {
+	valueDisplay.classList.remove("opacity-0");
+}
+
+function resetValue() {
+	valueDisplay.textContent = "0";
+	valueString.textContent = "";
+	valueNumbResult.textContent = "";
+	butNumbOne.display = "";
+	butNumbTwo.display = "";
+	opperand.char = "";
+}
+
+function resultFunction() {
+	resultNumb.display = butNumbOne.display + butNumbTwo.display;
+	valueString.textContent = "";
+	opperand.char = "";
+	valueNumbResult.textContent = resultNumb.display;
+	console.log(resultNumb.display);
+}
+
+function resultNumbHandler() {
+	if (valueNumbResult.textContent != "") {
+		valueNumbResult.textContent = "";
+		butNumbOne.display = "";
+		butNumbTwo.display = "";
+		opperand.char = "";
+	}
+}
 document.addEventListener("DOMContentLoaded", main);
