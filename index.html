@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html lang="pl" class="box-border m-0 p-0">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="./tailwind.css">
+		<link rel="stylesheet" href="./tailwind.css" />
 
-    <title>Calculator 1 Js Project</title>
-</head>
-<body class="h-screen w-full grid grid-rows-6 grid-cols-1 text-xl font-normal bg-teal-700">
-    <header class="pt-8">
-        <h1 class="text-2xl text-center text-teal-950">Calculator Project</h1>
-        <nav class="container mx-auto h10 w-full flex items-center justify-center">
-            <h2 class="text-teal-950">There will be some functions</h2>
-        </nav>
-    </header>
-    <main class="row-span-5 h-full w-full">
-        <section id="calculator" class="h-full w-full flex items-center justify-center">
-            <div id="calcBody" class="h-5/6 w-5/6 relative"></div>
-        </section>
-    </main>
-</body>
+		<title>Calculator 1 Js Project</title>
+	</head>
+	<body
+		class="h-screen w-full grid grid-rows-6 grid-cols-1 text-xl font-normal bg-teal-700"
+	>
+		<header class="pt-8">
+			<h1 class="text-2xl text-center text-teal-950">Calculator Project</h1>
+			<nav
+				class="container mx-auto h10 w-full flex items-center justify-center"
+			>
+				<h2 class="text-teal-950">There will be some functions</h2>
+			</nav>
+		</header>
+		<main class="row-span-5 h-full w-full">
+			<section
+				id="calculator"
+				class="h-full w-full flex items-center justify-center"
+			>
+				<div id="calcBody" class="h-5/6 w-5/6 relative">
+					<div
+						id="calcBackground"
+						class="h-full w-full border-2 rounded-lg bg-slate-300 opacity-20"
+					></div>
+					<div
+						id="valueScreen"
+						class="h-14 w-full px-10 absolute top-0 flex items-center justify-end border-b-2 rounded-lg border-b-teal-500 bg-slate-800/20"
+					>
+						<p
+							id="valueDisplay"
+							class="text-2xl text-teal-950 underline decoration-teal-950"
+						>
+							0
+						</p>
+						<p
+							id="valueString"
+							class="text-2xl text-teal-950 underline decoration-teal-950 overflow-hidden"
+						></p>
+						<p
+							id="numbResult"
+							class="text-2xl text-teal-950 underline decoration-teal-950 overflow-hidden"
+						></p>
+					</div>
+				</div>
+			</section>
+		</main>
+	</body>
 </html>
