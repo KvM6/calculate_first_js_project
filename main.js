@@ -95,6 +95,21 @@ const prepareDOMEvents = () => {
 		butAdd.displayFunction();
 		butAdd.setOpperand();
 	});
+	calcSubstract.addEventListener("click", () => {
+		showZeroValue();
+		butSubstract.displayFunction();
+		butSubstract.setOpperand();
+	});
+	calcMultiply.addEventListener("click", () => {
+		showZeroValue();
+		butMultiply.displayFunction();
+		butMultiply.setOpperand();
+	});
+	calcDivide.addEventListener('click', () => {
+		showZeroValue();
+		butDivide.displayFunction();
+		butDivide.setOpperand();
+	})
 	calcReset.addEventListener("click", () => {
 		showZeroValue();
 		resetValue();
@@ -192,13 +207,13 @@ function resultFunction() {
 		opperand.char = "";
 		valueNumbResult.textContent = resultNumb.display;
 		console.log(resultNumb.display);
-	} else if (opperand.char == 'x') {
+	} else if (opperand.char == "x") {
 		resultNumb.display = butNumbOne.display * butNumbTwo.display;
 		valueString.textContent = "";
 		opperand.char = "";
 		valueNumbResult.textContent = resultNumb.display;
 		console.log(resultNumb.display);
-	} else if (opperand.char == '/') {
+	} else if (opperand.char == "/") {
 		resultNumb.display = butNumbOne.display / butNumbTwo.display;
 		valueString.textContent = "";
 		opperand.char = "";
