@@ -63,30 +63,88 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcTwo.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butTwo.displayValue();
+		if (opperand.char == "") {
+			butTwo.getNumb();
+		} else if (opperand.char != "") {
+			butTwo.getNumbTwo();
+		}
 	});
 	calcThree.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butThree.displayValue();
+		if (opperand.char == "") {
+			butThree.getNumb();
+		} else if (opperand.char != "") {
+			butThree.getNumbTwo();
+		}
 	});
 	calcFour.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butFour.displayValue();
+		if (opperand.char == "") {
+			butFour.getNumb();
+		} else if (opperand.char != "") {
+			butFour.getNumbTwo();
+		}
 	});
 	calcFive.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butFive.displayValue();
+		if (opperand.char == "") {
+			butFive.getNumb();
+		} else if (opperand.char != "") {
+			butFive.getNumbTwo();
+		}
 	});
 	calcSix.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butSix.displayValue();
+		if (opperand.char == "") {
+			butSix.getNumb();
+		} else if (opperand.char != "") {
+			butSix.getNumbTwo();
+		}
 	});
 	calcSeven.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butSeven.displayValue();
+		if (opperand.char == "") {
+			butSeven.getNumb();
+		} else if (opperand.char != "") {
+			butSeven.getNumbTwo();
+		}
 	});
 	calcEight.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butEight.displayValue();
+		if (opperand.char == "") {
+			butEight.getNumb();
+		} else if (opperand.char != "") {
+			butEight.getNumbTwo();
+		}
 	});
 	calcNine.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butNine.displayValue();
+		if (opperand.char == "") {
+			butNine.getNumb();
+		} else if (opperand.char != "") {
+			butNine.getNumbTwo();
+		}
 	});
 	calcZero.addEventListener("click", () => {
+		hideZeroValue();
+		resultNumbHandler();
 		butZero.displayValue();
 	});
 
