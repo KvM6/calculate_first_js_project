@@ -227,12 +227,16 @@ buttonValue.prototype.getNumbTwo = function () {
 };
 
 buttonFunction.prototype.displayFunction = function () {
-	valueDisplay.textContent = this.char;
-	valueString.textContent = "";
+	if (butNumbOne.display > 0) {
+		valueDisplay.textContent = this.char;
+		valueString.textContent = "";
+	}
 };
 buttonFunction.prototype.setOpperand = function () {
-	opperand.char = this.char;
-	console.log(opperand.char);
+	if (butNumbOne.display > 0) {
+		opperand.char = this.char;
+		console.log(opperand.char);
+	}
 };
 
 function hideZeroValue() {
