@@ -746,10 +746,6 @@ video {
   color: rgb(4 47 46 / var(--tw-text-opacity));
 }
 
-.underline {
-  text-decoration-line: underline;
-}
-
 .decoration-teal-950 {
   text-decoration-color: #042f2e;
 }
