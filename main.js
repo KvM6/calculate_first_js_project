@@ -253,26 +253,47 @@ function resetValue() {
 	valueNumbResult.textContent = "";
 	butNumbOne.display = "";
 	butNumbTwo.display = "";
+	resultNumb.display = "";
 	opperand.char = "";
 }
 
 function resultFunction() {
-	if (opperand.char == "+") {
-		resultNumb.display = butNumbOne.display + butNumbTwo.display;
-		valueNumbResult.textContent = resultNumb.display;
-		console.log(resultNumb.display);
-	} else if (opperand.char == "-") {
-		resultNumb.display = butNumbOne.display - butNumbTwo.display;
-		valueNumbResult.textContent = resultNumb.display;
-		console.log(resultNumb.display);
-	} else if (opperand.char == "x") {
-		resultNumb.display = butNumbOne.display * butNumbTwo.display;
-		valueNumbResult.textContent = resultNumb.display;
-		console.log(resultNumb.display);
-	} else if (opperand.char == "/") {
-		resultNumb.display = butNumbOne.display / butNumbTwo.display;
-		valueNumbResult.textContent = resultNumb.display;
-		console.log(resultNumb.display);
+	if (resultNumb.display === "") {
+		if (opperand.char == "+") {
+			resultNumb.display = butNumbOne.display + butNumbTwo.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		} else if (opperand.char == "-") {
+			resultNumb.display = butNumbOne.display - butNumbTwo.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		} else if (opperand.char == "x") {
+			resultNumb.display = butNumbOne.display * butNumbTwo.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		} else if (opperand.char == "/") {
+			resultNumb.display = butNumbOne.display / butNumbTwo.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		}
+	} else if (resultNumb.display != "") {
+		if (opperand.char == "+") {
+			resultNumb.display += butNumbOne.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		} else if (opperand.char == "-") {
+			resultNumb.display = butNumbOne.display - butNumbTwo.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		} else if (opperand.char == "x") {
+			resultNumb.display = butNumbOne.display * butNumbTwo.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		} else if (opperand.char == "/") {
+			resultNumb.display = butNumbOne.display / butNumbTwo.display;
+			valueNumbResult.textContent = resultNumb.display;
+			console.log(resultNumb.display);
+		}
 	}
 	valueString.textContent = "";
 	valueDisplay.textContent = "";
