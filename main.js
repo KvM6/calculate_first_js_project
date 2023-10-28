@@ -259,30 +259,24 @@ function resetValue() {
 function resultFunction() {
 	if (opperand.char == "+") {
 		resultNumb.display = butNumbOne.display + butNumbTwo.display;
-		valueString.textContent = "";
-		valueDisplay.textContent = "";
-		opperand.char = "";
 		valueNumbResult.textContent = resultNumb.display;
 		console.log(resultNumb.display);
 	} else if (opperand.char == "-") {
 		resultNumb.display = butNumbOne.display - butNumbTwo.display;
-		valueString.textContent = "";
-		opperand.char = "";
 		valueNumbResult.textContent = resultNumb.display;
 		console.log(resultNumb.display);
 	} else if (opperand.char == "x") {
 		resultNumb.display = butNumbOne.display * butNumbTwo.display;
-		valueString.textContent = "";
-		opperand.char = "";
 		valueNumbResult.textContent = resultNumb.display;
 		console.log(resultNumb.display);
 	} else if (opperand.char == "/") {
 		resultNumb.display = butNumbOne.display / butNumbTwo.display;
-		valueString.textContent = "";
-		opperand.char = "";
 		valueNumbResult.textContent = resultNumb.display;
 		console.log(resultNumb.display);
 	}
+	valueString.textContent = "";
+	valueDisplay.textContent = "";
+	opperand.char = "";
 }
 
 function resultNumbHandler() {
