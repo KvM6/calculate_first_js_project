@@ -163,11 +163,11 @@ const prepareDOMEvents = () => {
 		butMultiply.displayFunction();
 		butMultiply.setOpperand();
 	});
-	calcDivide.addEventListener('click', () => {
+	calcDivide.addEventListener("click", () => {
 		showZeroValue();
 		butDivide.displayFunction();
 		butDivide.setOpperand();
-	})
+	});
 	calcReset.addEventListener("click", () => {
 		showZeroValue();
 		resetValue();
@@ -260,6 +260,7 @@ function resultFunction() {
 	if (opperand.char == "+") {
 		resultNumb.display = butNumbOne.display + butNumbTwo.display;
 		valueString.textContent = "";
+		valueDisplay.textContent = "";
 		opperand.char = "";
 		valueNumbResult.textContent = resultNumb.display;
 		console.log(resultNumb.display);
