@@ -58,7 +58,7 @@ const prepareDOMEvents = () => {
 		butOne.displayValue();
 		if (operand.char == "") {
 			butOne.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butOne.getNumbTwo();
 		}
 	});
@@ -68,7 +68,7 @@ const prepareDOMEvents = () => {
 		butTwo.displayValue();
 		if (operand.char == "") {
 			butTwo.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butTwo.getNumbTwo();
 		}
 	});
@@ -78,7 +78,7 @@ const prepareDOMEvents = () => {
 		butThree.displayValue();
 		if (operand.char == "") {
 			butThree.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butThree.getNumbTwo();
 		}
 	});
@@ -88,7 +88,7 @@ const prepareDOMEvents = () => {
 		butFour.displayValue();
 		if (operand.char == "") {
 			butFour.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butFour.getNumbTwo();
 		}
 	});
@@ -98,7 +98,7 @@ const prepareDOMEvents = () => {
 		butFive.displayValue();
 		if (operand.char == "") {
 			butFive.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butFive.getNumbTwo();
 		}
 	});
@@ -108,7 +108,7 @@ const prepareDOMEvents = () => {
 		butSix.displayValue();
 		if (operand.char == "") {
 			butSix.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butSix.getNumbTwo();
 		}
 	});
@@ -118,7 +118,7 @@ const prepareDOMEvents = () => {
 		butSeven.displayValue();
 		if (operand.char == "") {
 			butSeven.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butSeven.getNumbTwo();
 		}
 	});
@@ -128,7 +128,7 @@ const prepareDOMEvents = () => {
 		butEight.displayValue();
 		if (operand.char == "") {
 			butEight.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butEight.getNumbTwo();
 		}
 	});
@@ -138,7 +138,7 @@ const prepareDOMEvents = () => {
 		butNine.displayValue();
 		if (operand.char == "") {
 			butNine.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butNine.getNumbTwo();
 		}
 	});
@@ -148,15 +148,19 @@ const prepareDOMEvents = () => {
 		butZero.displayValue();
 		if (operand.char == "") {
 			butZero.getNumb();
-		} else if (operand.char != "" || resultNumb.display != '') {
+		} else if (operand.char != "" || resultNumb.display != "") {
 			butZero.getNumbTwo();
 		}
 	});
 
 	calcAdd.addEventListener("click", () => {
+		resultFunction();
 		showZeroValue();
 		butAdd.displayFunction();
 		butAdd.setoperand();
+		if (operand.char == "") {
+			valueDisplay.textContent = "";
+		}
 	});
 	calcSubstract.addEventListener("click", () => {
 		showZeroValue();
@@ -266,22 +270,18 @@ function resultFunction() {
 	if (resultNumb.display === "") {
 		if (operand.char == "+") {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
-			butNumbTwo.display = "";
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 		} else if (operand.char == "-") {
 			resultNumb.display = butNumbOne.display - butNumbTwo.display;
-			butNumbTwo.display = "";
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 		} else if (operand.char == "x") {
 			resultNumb.display = butNumbOne.display * butNumbTwo.display;
-			butNumbTwo.display = "";
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
-			butNumbTwo.display = "";
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 		}
@@ -324,6 +324,7 @@ function resultFunction() {
 	}
 	valueString.textContent = "";
 	valueDisplay.textContent = "";
+	butNumbTwo.display = "";
 	operand.char = "";
 }
 
