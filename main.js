@@ -154,13 +154,12 @@ const prepareDOMEvents = () => {
 	});
 
 	calcAdd.addEventListener("click", () => {
-		resultFunction();
-		showZeroValue();
-		butAdd.displayFunction();
-		butAdd.setoperand();
-		if (operand.char == "") {
-			valueDisplay.textContent = "";
+		if (operand.char != "") {
+			resultFunction();
 		}
+		showZeroValue();
+		butAdd.setoperand();
+		butAdd.displayFunction();
 	});
 	calcSubstract.addEventListener("click", () => {
 		showZeroValue();
@@ -236,13 +235,13 @@ buttonValue.prototype.getNumbTwo = function () {
 };
 
 buttonFunction.prototype.displayFunction = function () {
-	if (butNumbOne.display > 0) {
+	if (butNumbOne.display >= 0 && valueNumbResult.textContent == '') {
 		valueDisplay.textContent = this.char;
 		valueString.textContent = "";
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display > 0) {
+	if (butNumbOne.display >= 0) {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
@@ -323,8 +322,8 @@ function resultFunction() {
 		}
 	}
 	valueString.textContent = "";
-	valueDisplay.textContent = "";
 	butNumbTwo.display = "";
+	valueDisplay.textContent = "";
 	operand.char = "";
 }
 
