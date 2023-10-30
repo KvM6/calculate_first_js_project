@@ -162,19 +162,28 @@ const prepareDOMEvents = () => {
 		butAdd.displayFunction();
 	});
 	calcSubstract.addEventListener("click", () => {
+		if (operand.char != "") {
+			resultFunction();
+		}
 		showZeroValue();
-		butSubstract.displayFunction();
 		butSubstract.setoperand();
+		butSubstract.displayFunction();
 	});
 	calcMultiply.addEventListener("click", () => {
+		if (operand.char != "") {
+			resultFunction();
+		}
 		showZeroValue();
-		butMultiply.displayFunction();
 		butMultiply.setoperand();
+		butMultiply.displayFunction();
 	});
 	calcDivide.addEventListener("click", () => {
+		if (operand.char != "") {
+			resultFunction();
+		}
 		showZeroValue();
-		butDivide.displayFunction();
 		butDivide.setoperand();
+		butDivide.displayFunction();
 	});
 	calcReset.addEventListener("click", () => {
 		showZeroValue();
@@ -235,13 +244,13 @@ buttonValue.prototype.getNumbTwo = function () {
 };
 
 buttonFunction.prototype.displayFunction = function () {
-	if (butNumbOne.display >= 0 && valueNumbResult.textContent == '') {
+	if (butNumbOne.display >= 0 && valueNumbResult.textContent == "") {
 		valueDisplay.textContent = this.char;
 		valueString.textContent = "";
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display >= 0) {
+	if (butNumbOne.display >= 0 && valueNumbResult.textContent == "") {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
