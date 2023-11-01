@@ -241,7 +241,7 @@ buttonFunction.prototype.displayFunction = function () {
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display >= 0 && valueNumbResult.textContent == "") {
+	if (butNumbOne.display >= '' ) {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
@@ -253,6 +253,7 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
+			console.log('test1');
 		} else if (operand.char == "-") {
 			resultNumb.display = butNumbOne.display - butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -271,6 +272,7 @@ function resultFunction() {
 			resultNumb.display += butNumbOne.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
+			console.log('test2');
 		} else if (operand.char == "-") {
 			resultNumb.display -= butNumbOne.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -289,6 +291,7 @@ function resultFunction() {
 			resultNumb.display += butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
+			console.log('test3');
 		} else if (operand.char == "-") {
 			resultNumb.display -= butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -310,7 +313,18 @@ function resultFunction() {
 }
 
 function intToFloat() {
-	if (valueDisplay.textContent === "0") valueDisplay.textContent += ",";
+	if (valueDisplay.textContent == "0" || valueDisplay.textContent == "") {
+		valueDisplay.textContent += ",";
+		if (
+			valueNumbResult.textContent.includes(",") == false &&
+			resultNumb.display != ""
+		) {
+			valueNumbResult.textContent += ",0";
+		}
+	} else if (butNumbOne.display != "") {
+		butNumbOne.display += ",";
+		console.log(butNumbOne.display);
+	}
 }
 
 function resultNumbHandler() {
