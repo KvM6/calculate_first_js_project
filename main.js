@@ -24,6 +24,7 @@ let calcEqual;
 const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
+	valueDisplay.textContent = "0";
 };
 
 const prepareDOMElements = () => {
@@ -309,7 +310,7 @@ function resultFunction() {
 }
 
 function intToFloat() {
-
+	if (valueDisplay.textContent === "0") valueDisplay.textContent += ",";
 }
 
 function resultNumbHandler() {
