@@ -24,6 +24,7 @@ let calcEqual;
 const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
+	valueDisplay.textContent = "0";
 };
 
 const prepareDOMElements = () => {
@@ -53,7 +54,6 @@ const prepareDOMElements = () => {
 
 const prepareDOMEvents = () => {
 	calcOne.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butOne.displayValue();
 		if (operand.char == "") {
@@ -63,7 +63,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcTwo.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butTwo.displayValue();
 		if (operand.char == "") {
@@ -73,7 +72,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcThree.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butThree.displayValue();
 		if (operand.char == "") {
@@ -83,7 +81,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcFour.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butFour.displayValue();
 		if (operand.char == "") {
@@ -93,7 +90,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcFive.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butFive.displayValue();
 		if (operand.char == "") {
@@ -103,7 +99,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcSix.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butSix.displayValue();
 		if (operand.char == "") {
@@ -113,7 +108,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcSeven.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butSeven.displayValue();
 		if (operand.char == "") {
@@ -123,7 +117,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcEight.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butEight.displayValue();
 		if (operand.char == "") {
@@ -133,7 +126,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcNine.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butNine.displayValue();
 		if (operand.char == "") {
@@ -143,7 +135,6 @@ const prepareDOMEvents = () => {
 		}
 	});
 	calcZero.addEventListener("click", () => {
-		hideZeroValue();
 		resultNumbHandler();
 		butZero.displayValue();
 		if (operand.char == "") {
@@ -157,7 +148,6 @@ const prepareDOMEvents = () => {
 		if (operand.char != "") {
 			resultFunction();
 		}
-		showZeroValue();
 		butAdd.setoperand();
 		butAdd.displayFunction();
 	});
@@ -165,7 +155,6 @@ const prepareDOMEvents = () => {
 		if (operand.char != "") {
 			resultFunction();
 		}
-		showZeroValue();
 		butSubstract.setoperand();
 		butSubstract.displayFunction();
 	});
@@ -173,7 +162,6 @@ const prepareDOMEvents = () => {
 		if (operand.char != "") {
 			resultFunction();
 		}
-		showZeroValue();
 		butMultiply.setoperand();
 		butMultiply.displayFunction();
 	});
@@ -181,16 +169,17 @@ const prepareDOMEvents = () => {
 		if (operand.char != "") {
 			resultFunction();
 		}
-		showZeroValue();
 		butDivide.setoperand();
 		butDivide.displayFunction();
 	});
-	calcReset.addEventListener("click", () => {
-		showZeroValue();
-		resetValue();
+	calcComma.addEventListener("click", () => {
+		intToFloat();
 	});
 	calcEqual.addEventListener("click", () => {
 		resultFunction();
+	});
+	calcReset.addEventListener("click", () => {
+		resetValue();
 	});
 };
 
@@ -228,6 +217,7 @@ const butReset = new buttonFunction("0");
 let operand = new buttonFunction("");
 
 buttonValue.prototype.displayValue = function () {
+	valueDisplay.classList.add("opacity-0");
 	valueString.textContent += this.display;
 };
 buttonValue.prototype.getNumb = function () {
@@ -245,6 +235,7 @@ buttonValue.prototype.getNumbTwo = function () {
 
 buttonFunction.prototype.displayFunction = function () {
 	if (butNumbOne.display >= 0 && valueNumbResult.textContent == "") {
+		valueDisplay.classList.remove("opacity-0");
 		valueDisplay.textContent = this.char;
 		valueString.textContent = "";
 	}
@@ -255,24 +246,6 @@ buttonFunction.prototype.setoperand = function () {
 		console.log(operand.char);
 	}
 };
-
-function hideZeroValue() {
-	valueDisplay.classList.add("opacity-0");
-}
-
-function showZeroValue() {
-	valueDisplay.classList.remove("opacity-0");
-}
-
-function resetValue() {
-	valueDisplay.textContent = "0";
-	valueString.textContent = "";
-	valueNumbResult.textContent = "";
-	butNumbOne.display = "";
-	butNumbTwo.display = "";
-	resultNumb.display = "";
-	operand.char = "";
-}
 
 function resultFunction() {
 	if (resultNumb.display === "") {
@@ -336,13 +309,27 @@ function resultFunction() {
 	operand.char = "";
 }
 
+function intToFloat() {
+	if (valueDisplay.textContent === "0") valueDisplay.textContent += ",";
+}
+
 function resultNumbHandler() {
 	if (valueNumbResult.textContent != "") {
 		valueNumbResult.textContent = "";
 		butNumbOne.display = "";
 		butNumbTwo.display = "";
 		operand.char = "";
-		
 	}
+}
+
+function resetValue() {
+	valueDisplay.classList.remove("opacity-0");
+	valueDisplay.textContent = "0";
+	valueString.textContent = "";
+	valueNumbResult.textContent = "";
+	butNumbOne.display = "";
+	butNumbTwo.display = "";
+	resultNumb.display = "";
+	operand.char = "";
 }
 document.addEventListener("DOMContentLoaded", main);
