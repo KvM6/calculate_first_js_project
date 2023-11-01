@@ -342,6 +342,7 @@ function resultNumbHandler() {
 		butNumbOne.display = "";
 		butNumbTwo.display = "";
 		operand.char = "";
+		
 	}
 }
 document.addEventListener("DOMContentLoaded", main);
