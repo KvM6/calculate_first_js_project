@@ -171,7 +171,9 @@ const prepareDOMEvents = () => {
 		butDivide.setoperand();
 		butDivide.displayFunction();
 	});
-	calcComma.addEventListener("click", () => {});
+	calcComma.addEventListener("click", () => {
+		intToFloat();
+	});
 	calcEqual.addEventListener("click", () => {
 		resultFunction();
 	});
@@ -244,17 +246,6 @@ buttonFunction.prototype.setoperand = function () {
 	}
 };
 
-function resetValue() {
-	valueDisplay.classList.remove("opacity-0");
-	valueDisplay.textContent = "0";
-	valueString.textContent = "";
-	valueNumbResult.textContent = "";
-	butNumbOne.display = "";
-	butNumbTwo.display = "";
-	resultNumb.display = "";
-	operand.char = "";
-}
-
 function resultFunction() {
 	if (resultNumb.display === "") {
 		if (operand.char == "+") {
@@ -317,6 +308,10 @@ function resultFunction() {
 	operand.char = "";
 }
 
+function intToFloat() {
+
+}
+
 function resultNumbHandler() {
 	if (valueNumbResult.textContent != "") {
 		valueNumbResult.textContent = "";
@@ -324,5 +319,16 @@ function resultNumbHandler() {
 		butNumbTwo.display = "";
 		operand.char = "";
 	}
+}
+
+function resetValue() {
+	valueDisplay.classList.remove("opacity-0");
+	valueDisplay.textContent = "0";
+	valueString.textContent = "";
+	valueNumbResult.textContent = "";
+	butNumbOne.display = "";
+	butNumbTwo.display = "";
+	resultNumb.display = "";
+	operand.char = "";
 }
 document.addEventListener("DOMContentLoaded", main);
