@@ -221,6 +221,14 @@ buttonValue.prototype.displayValue = function () {
 	valueString.textContent += this.display;
 };
 buttonValue.prototype.getNumb = function () {
+	if (
+		valueDisplay.textContent.includes(",") == true ||
+		valueString.textContent.includes(",")
+	) {
+		butNumbOne.display += ',' + this.display
+		console.log(butNumbOne.display);
+		console.log("1.0");
+	}
 	butNumbOne.display += this.display;
 	butNumbOne.display = parseInt(butNumbOne.display);
 	console.log(butNumbOne.display);
@@ -241,7 +249,7 @@ buttonFunction.prototype.displayFunction = function () {
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display >= '' ) {
+	if (butNumbOne.display >= "") {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
@@ -253,7 +261,7 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log('test1');
+			console.log("test1");
 		} else if (operand.char == "-") {
 			resultNumb.display = butNumbOne.display - butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -272,7 +280,7 @@ function resultFunction() {
 			resultNumb.display += butNumbOne.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log('test2');
+			console.log("test2");
 		} else if (operand.char == "-") {
 			resultNumb.display -= butNumbOne.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -291,7 +299,7 @@ function resultFunction() {
 			resultNumb.display += butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log('test3');
+			console.log("test3");
 		} else if (operand.char == "-") {
 			resultNumb.display -= butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -320,10 +328,9 @@ function intToFloat() {
 			resultNumb.display != ""
 		) {
 			valueNumbResult.textContent += ",0";
+		} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
+			valueString.textContent += ",";
 		}
-	} else if (butNumbOne.display != "") {
-		butNumbOne.display += ",";
-		console.log(butNumbOne.display);
 	}
 }
 
