@@ -311,6 +311,7 @@ function resultFunction() {
 
 function intToFloat() {
 	if (valueDisplay.textContent === "0") valueDisplay.textContent += ",";
+	
 }
 
 function resultNumbHandler() {
