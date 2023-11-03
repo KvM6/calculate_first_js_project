@@ -266,17 +266,14 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display - butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test1");
 		} else if (operand.char == "x") {
 			resultNumb.display = butNumbOne.display * butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test1");
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test1");
 		}
 	} else if (resultNumb.display != "" && butNumbTwo.display === "") {
 		if (operand.char == "+") {
@@ -288,17 +285,14 @@ function resultFunction() {
 			resultNumb.display -= butNumbOne.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test2");
 		} else if (operand.char == "x") {
 			resultNumb.display *= butNumbOne.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test2");
 		} else if (operand.char == "/") {
 			resultNumb.display /= butNumbOne.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test2");
 		}
 	} else if (resultNumb.display != "" && butNumbTwo.display != "") {
 		if (operand.char == "+") {
@@ -307,20 +301,17 @@ function resultFunction() {
 			console.log(resultNumb.display);
 			console.log("test3");
 		} else if (operand.char == "-") {
-			resultNumb.display += butNumbOne.display - butNumbTwo.display;
+			resultNumb.display -= butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test3");
 		} else if (operand.char == "x") {
-			resultNumb.display += butNumbOne.display * butNumbTwo.display;
+			resultNumb.display *= butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test3");
 		} else if (operand.char == "/") {
-			resultNumb.display += butNumbOne.display / butNumbTwo.display;
+			resultNumb.display /= butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
-			console.log("test3");
 		}
 	}
 	valueString.textContent = "";
@@ -330,7 +321,17 @@ function resultFunction() {
 }
 
 function intToFloat() {
-	if (valueDisplay.textContent === "0") valueDisplay.textContent += ",";
+	if (valueDisplay.textContent == "0" || valueDisplay.textContent == "") {
+		valueDisplay.textContent += ",";
+		if (
+			valueNumbResult.textContent.includes(",") == false &&
+			resultNumb.display != ""
+		) {
+			valueNumbResult.textContent += ",0";
+		} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
+			valueString.textContent += ",";
+		}
+	}
 }
 
 function resultNumbHandler() {
