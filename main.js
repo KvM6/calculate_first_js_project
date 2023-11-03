@@ -249,7 +249,7 @@ buttonFunction.prototype.displayFunction = function () {
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display >= "") {
+	if (butNumbOne.display >= "" && valueNumbResult.textContent == "" ) {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
