@@ -225,7 +225,7 @@ buttonValue.prototype.getNumb = function () {
 		valueDisplay.textContent.includes(",") == true ||
 		valueString.textContent.includes(",")
 	) {
-		butNumbOne.display += ',' + this.display
+		butNumbOne.display += "," + this.display;
 		console.log(butNumbOne.display);
 		console.log("1.0");
 	}
@@ -249,7 +249,7 @@ buttonFunction.prototype.displayFunction = function () {
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display >= "" && valueNumbResult.textContent == "" ) {
+	if (butNumbOne.display >= "" && valueNumbResult.textContent == "") {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
@@ -323,10 +323,7 @@ function resultFunction() {
 function intToFloat() {
 	if (valueDisplay.textContent == "0" || valueDisplay.textContent == "") {
 		valueDisplay.textContent += ",";
-		if (
-			valueNumbResult.textContent.includes(",") == false &&
-			resultNumb.display != ""
-		) {
+		if (valueNumbResult.textContent.includes(",") == false) {
 			valueNumbResult.textContent += ",0";
 		} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
 			valueString.textContent += ",";
