@@ -350,4 +350,5 @@ function resetValue() {
 	resultNumb.display = "";
 	operand.char = "";
 }
+
 document.addEventListener("DOMContentLoaded", main);
