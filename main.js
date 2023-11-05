@@ -145,28 +145,28 @@ const prepareDOMEvents = () => {
 	});
 
 	calcAdd.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butAdd.setoperand();
 		butAdd.displayFunction();
 	});
 	calcSubstract.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butSubstract.setoperand();
 		butSubstract.displayFunction();
 	});
 	calcMultiply.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butMultiply.setoperand();
 		butMultiply.displayFunction();
 	});
 	calcDivide.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butDivide.setoperand();
@@ -221,16 +221,18 @@ buttonValue.prototype.displayValue = function () {
 	valueString.textContent += this.display;
 };
 buttonValue.prototype.getNumb = function () {
-	if (
-		valueDisplay.textContent.includes(",") == true ||
-		valueString.textContent.includes(",")
-	) {
-		butNumbOne.display += ',' + this.display
-		console.log(butNumbOne.display);
-		console.log("1.0");
+	if (valueString.textContent.includes(",") == true) {
+		butNumbOne.display += "." + this.display;
+		console.log(", jest");
+	} else if (valueString.textContent.includes(",") == true) {
+		butNumbOne.display += this.display;
+		console.log(", po");
+	} 
+	else if (valueString.textContent.includes(",") == false) {
+		console.log(", nie jest");
+		butNumbOne.display += this.display;
+		butNumbOne.display = parseInt(butNumbOne.display);
 	}
-	butNumbOne.display += this.display;
-	butNumbOne.display = parseInt(butNumbOne.display);
 	console.log(butNumbOne.display);
 	console.log("1");
 };
@@ -242,21 +244,22 @@ buttonValue.prototype.getNumbTwo = function () {
 };
 
 buttonFunction.prototype.displayFunction = function () {
-	if (butNumbOne.display >= 0 && valueNumbResult.textContent == "") {
+	if (butNumbOne.display != "" && valueNumbResult.textContent == "") {
 		valueDisplay.classList.remove("opacity-0");
 		valueDisplay.textContent = this.char;
+		console.log(valueString.textContent);
 		valueString.textContent = "";
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display >= "" && valueNumbResult.textContent == "" ) {
+	if (butNumbOne.display != "" && valueNumbResult.textContent == "") {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
 };
 
 function resultFunction() {
-	if (resultNumb.display === "") {
+	if (resultNumb.display === "" && butNumbOne.display != "") {
 		if (operand.char == "+") {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -327,12 +330,39 @@ function intToFloat() {
 			valueNumbResult.textContent.includes(",") == false &&
 			resultNumb.display != ""
 		) {
-			valueNumbResult.textContent += ",0";
-		} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
+			valueNumbResult.textContent = "0,";
+		} else if (butNumbOne.display != "") {
+			valueString.textContent += ",";
+		} else if (butNumbTwo.display != "") {
 			valueString.textContent += ",";
 		}
 	}
 }
+
+// TODO: check this function for float
+
+// function resultIntToFloat () {
+// 	if (resultNumb.display === "" && butNumbOne.display != "") {
+// 		if (operand.char == "+") {
+// 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
+// 			valueNumbResult.textContent = resultNumb.display;
+// 			console.log(resultNumb.display);
+// 			console.log("test1");
+// 		} else if (operand.char == "-") {
+// 			resultNumb.display = butNumbOne.display - butNumbTwo.display;
+// 			valueNumbResult.textContent = resultNumb.display;
+// 			console.log(resultNumb.display);
+// 		} else if (operand.char == "x") {
+// 			resultNumb.display = butNumbOne.display * butNumbTwo.display;
+// 			valueNumbResult.textContent = resultNumb.display;
+// 			console.log(resultNumb.display);
+// 		} else if (operand.char == "/") {
+// 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
+// 			valueNumbResult.textContent = resultNumb.display;
+// 			console.log(resultNumb.display);
+// 		}
+// 	}
+// }
 
 function resultNumbHandler() {
 	if (valueNumbResult.textContent != "") {
