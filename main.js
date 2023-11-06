@@ -200,6 +200,7 @@ const butNine = new buttonValue("9");
 let butNumbOne = new buttonValue("");
 let butNumbTwo = new buttonValue("");
 let resultNumb = new buttonValue("");
+let floatNumbOne = new buttonValue(0);
 
 function buttonFunction(char) {
 	this.char = char;
@@ -222,13 +223,9 @@ buttonValue.prototype.displayValue = function () {
 };
 buttonValue.prototype.getNumb = function () {
 	if (valueString.textContent.includes(",") == true) {
-		butNumbOne.display += "." + this.display;
-		console.log(", jest");
-	} else if (valueString.textContent.includes(",") == true) {
 		butNumbOne.display += this.display;
-		console.log(", po");
-	} 
-	else if (valueString.textContent.includes(",") == false) {
+		console.log(", jest");
+	} else if (valueString.textContent.includes(",") == false) {
 		console.log(", nie jest");
 		butNumbOne.display += this.display;
 		butNumbOne.display = parseInt(butNumbOne.display);
@@ -333,8 +330,10 @@ function intToFloat() {
 			valueNumbResult.textContent = "0,";
 		} else if (butNumbOne.display != "") {
 			valueString.textContent += ",";
+			butNumbOne.display += ",";
 		} else if (butNumbTwo.display != "") {
 			valueString.textContent += ",";
+			butNumbTwo.display += ",";
 		}
 	}
 }
