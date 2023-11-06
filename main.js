@@ -200,7 +200,7 @@ const butNine = new buttonValue("9");
 let butNumbOne = new buttonValue("");
 let butNumbTwo = new buttonValue("");
 let resultNumb = new buttonValue("");
-let floatNumbOne = new buttonValue(0);
+let floatNumbOne = new buttonValue("");
 
 function buttonFunction(char) {
 	this.char = char;
@@ -222,29 +222,29 @@ buttonValue.prototype.displayValue = function () {
 	valueString.textContent += this.display;
 };
 buttonValue.prototype.getNumb = function () {
-	if (valueString.textContent.includes(",") == true) {
-		butNumbOne.display += this.display;
-		console.log(", jest");
-	} else if (valueString.textContent.includes(",") == false) {
-		console.log(", nie jest");
-		butNumbOne.display += this.display;
-		butNumbOne.display = parseInt(butNumbOne.display);
+	butNumbOne.display += this.display;
+	if (butNumbOne.display.includes(".")) {
+		butNumbOne.display = parseFloat(butNumbOne.display);
+		console.log("float");
 	}
+	// butNumbOne.display = parseInt(butNumbOne.display)
 	console.log(butNumbOne.display);
-	console.log("1");
+	console.log("numb1");
 };
 buttonValue.prototype.getNumbTwo = function () {
 	butNumbTwo.display += this.display;
-	butNumbTwo.display = parseInt(butNumbTwo.display);
+	if (butNumbTwo.display.includes(".")) {
+		butNumbTwo.display = parseFloat(butNumbTwo.display);
+		console.log("float");
+	}
 	console.log(butNumbTwo.display);
-	console.log("2");
+	console.log("numb2");
 };
 
 buttonFunction.prototype.displayFunction = function () {
 	if (butNumbOne.display != "" && valueNumbResult.textContent == "") {
 		valueDisplay.classList.remove("opacity-0");
 		valueDisplay.textContent = this.char;
-		console.log(valueString.textContent);
 		valueString.textContent = "";
 	}
 };
@@ -323,45 +323,24 @@ function resultFunction() {
 function intToFloat() {
 	if (valueDisplay.textContent == "0" || valueDisplay.textContent == "") {
 		valueDisplay.textContent += ",";
-		if (
-			valueNumbResult.textContent.includes(",") == false &&
-			resultNumb.display != ""
-		) {
-			valueNumbResult.textContent = "0,";
-		} else if (butNumbOne.display != "") {
-			valueString.textContent += ",";
-			butNumbOne.display += ",";
-		} else if (butNumbTwo.display != "") {
-			valueString.textContent += ",";
-			butNumbTwo.display += ",";
-		}
+		console.log("displaydot");
+	}
+	if (
+		valueNumbResult.textContent.includes(",") == false &&
+		resultNumb.display != ""
+	) {
+		valueNumbResult.textContent = "0,";
+		console.log("valuedot");
+	} else if (butNumbOne.display != "") {
+		valueString.textContent += ",";
+		butNumbOne.display += ".";
+		console.log("dot1");
+	} else if (butNumbTwo.display != "") {
+		valueString.textContent += ",";
+		butNumbTwo.display += ".";
+		console.log("dot2");
 	}
 }
-
-// TODO: check this function for float
-
-// function resultIntToFloat () {
-// 	if (resultNumb.display === "" && butNumbOne.display != "") {
-// 		if (operand.char == "+") {
-// 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
-// 			valueNumbResult.textContent = resultNumb.display;
-// 			console.log(resultNumb.display);
-// 			console.log("test1");
-// 		} else if (operand.char == "-") {
-// 			resultNumb.display = butNumbOne.display - butNumbTwo.display;
-// 			valueNumbResult.textContent = resultNumb.display;
-// 			console.log(resultNumb.display);
-// 		} else if (operand.char == "x") {
-// 			resultNumb.display = butNumbOne.display * butNumbTwo.display;
-// 			valueNumbResult.textContent = resultNumb.display;
-// 			console.log(resultNumb.display);
-// 		} else if (operand.char == "/") {
-// 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
-// 			valueNumbResult.textContent = resultNumb.display;
-// 			console.log(resultNumb.display);
-// 		}
-// 	}
-// }
 
 function resultNumbHandler() {
 	if (valueNumbResult.textContent != "") {
