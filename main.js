@@ -351,5 +351,4 @@ function resetValue() {
 	operand.char = "";
 }
 
-
 document.addEventListener("DOMContentLoaded", main);
