@@ -340,7 +340,9 @@ function intToFloat() {
 			butNumbOne.display == "" &&
 			resultNumb.display == "")
 	) {
-		valueDisplay.textContent += ",";
+		valueDisplay.classList.add("opacity-0");
+		valueString.textContent ='0'
+		butNumbOne.display = '0'
 		console.log("displaydot");
 	}
 	if (
