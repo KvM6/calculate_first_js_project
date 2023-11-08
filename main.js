@@ -235,7 +235,7 @@ buttonValue.prototype.getNumbTwo = function () {
 	butNumbTwo.display += this.display;
 	if (butNumbTwo.display.includes(".")) {
 		butNumbTwo.display = parseFloat(butNumbTwo.display);
-		console.log("float");
+		console.log("float2");
 	}
 	console.log(butNumbTwo.display);
 	console.log("numb2");
@@ -331,7 +331,7 @@ function intToFloat() {
 	) {
 		valueNumbResult.textContent = "0,";
 		console.log("valuedot");
-	} else if (butNumbOne.display != "") {
+	} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
 		valueString.textContent += ",";
 		butNumbOne.display += ".";
 		console.log("dot1");
