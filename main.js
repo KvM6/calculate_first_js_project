@@ -223,11 +223,19 @@ buttonValue.prototype.displayValue = function () {
 };
 buttonValue.prototype.getNumb = function () {
 	butNumbOne.display += this.display;
+	if (butNumbOne.display.includes(".")) {
+		butNumbOne.display = parseFloat(butNumbOne.display);
+		console.log("float");
+	} else butNumbOne.display = parseInt(butNumbOne.display);
 	console.log(butNumbOne.display);
 	console.log("numb1");
 };
 buttonValue.prototype.getNumbTwo = function () {
 	butNumbTwo.display += this.display;
+	if (butNumbTwo.display.includes(".")) {
+		butNumbTwo.display = parseFloat(butNumbTwo.display);
+		console.log("float2");
+	} else butNumbTwo.display = parseInt(butNumbTwo.display);
 	console.log(butNumbTwo.display);
 	console.log("numb2");
 };
@@ -248,14 +256,14 @@ buttonFunction.prototype.setoperand = function () {
 
 function resultFunction() {
 	if (resultNumb.display === "" && butNumbOne.display != "") {
-		if (butNumbOne.display.includes(".")) {
-			butNumbOne.display = parseFloat(butNumbOne.display);
-			console.log("float");
-		} else butNumbOne.display = parseInt(butNumbOne.display);
-		if (butNumbTwo.display.includes(".")) {
-			butNumbTwo.display = parseFloat(butNumbTwo.display);
-			console.log("float2");
-		} else butNumbTwo.display = parseInt(butNumbTwo.display);
+		// if (butNumbOne.display.includes(".")) {
+		// 	butNumbOne.display = parseFloat(butNumbOne.display);
+		// 	console.log("float");
+		// } else butNumbOne.display = parseInt(butNumbOne.display);
+		// if (butNumbTwo.display.includes(".")) {
+		// 	butNumbTwo.display = parseFloat(butNumbTwo.display);
+		// 	console.log("float2");
+		// } else butNumbTwo.display = parseInt(butNumbTwo.display);
 
 		if (operand.char == "+") {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
@@ -333,27 +341,20 @@ function resultNumbHandler() {
 
 function intToFloat() {
 	if (
-		(valueDisplay.textContent == "0" &&
-			butNumbOne.display == "" &&
-			resultNumb.display == "" &&
-			resultNumb.display == "") ||
-		(valueDisplay.textContent == "" &&
-			butNumbOne.display == "" &&
-			resultNumb.display == "" &&
-			resultNumb.display == "")
+		valueDisplay.textContent == "0" &&
+		butNumbOne.display == "" &&
+		resultNumb.display == "" &&
+		resultNumb.display == ""
 	) {
 		valueDisplay.classList.add("opacity-0");
-		valueString.textContent = "0";
-		butNumbOne.display = "0";
+		valueString.textContent = "0,";
+		butNumbOne.display = "0.";
 		console.log("displaydot");
-	}
-	if (
-		valueNumbResult.textContent.includes(",") == false &&
-		resultNumb.display != ""
-	) {
-		valueNumbResult.textContent = "0,";
-		resultNumb.display = "";
-		console.log("valuedot");
+	} else if (butNumbOne.display != "" && valueDisplay.textContent != "") {
+		valueDisplay.textContent = "";
+		valueString.textContent = "0,";
+		butNumbTwo.display = "0.";
+		console.log("displaydot2");
 	} else if (
 		butNumbOne.display != "" &&
 		butNumbTwo.display == "" &&
@@ -367,11 +368,12 @@ function intToFloat() {
 		valueString.textContent += ",";
 		butNumbTwo.display += ".";
 		console.log("dot2");
-	} else if (butNumbOne.display != "" && valueDisplay.textContent != "") {
-		valueDisplay.textContent = "";
+	} else if (resultNumb.display != "") {
+		resultNumb.display = "";
+		valueNumbResult.textContent = "";
 		valueString.textContent = "0,";
-		butNumbTwo.display = "0.";
-		console.log("displaydot2");
+		butNumbOne.display = "0.";
+		console.log("displaydotAfterResult");
 	}
 }
 
