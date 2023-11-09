@@ -335,14 +335,16 @@ function intToFloat() {
 	if (
 		(valueDisplay.textContent == "0" &&
 			butNumbOne.display == "" &&
+			resultNumb.display == "" &&
 			resultNumb.display == "") ||
 		(valueDisplay.textContent == "" &&
 			butNumbOne.display == "" &&
+			resultNumb.display == "" &&
 			resultNumb.display == "")
 	) {
 		valueDisplay.classList.add("opacity-0");
-		valueString.textContent ='0'
-		butNumbOne.display = '0'
+		valueString.textContent = "0";
+		butNumbOne.display = "0";
 		console.log("displaydot");
 	}
 	if (
@@ -352,7 +354,12 @@ function intToFloat() {
 		valueNumbResult.textContent = "0,";
 		resultNumb.display = "";
 		console.log("valuedot");
-	} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
+	} else if (
+		butNumbOne.display != "" &&
+		butNumbTwo.display == "" &&
+		operand.char == "" &&
+		resultNumb != ""
+	) {
 		valueString.textContent += ",";
 		butNumbOne.display += ".";
 		console.log("dot1");
@@ -360,6 +367,11 @@ function intToFloat() {
 		valueString.textContent += ",";
 		butNumbTwo.display += ".";
 		console.log("dot2");
+	} else if (butNumbOne.display != "" && valueDisplay.textContent != "") {
+		valueDisplay.textContent = "";
+		valueString.textContent = "0,";
+		butNumbTwo.display = "0.";
+		console.log("displaydot2");
 	}
 }
 
