@@ -145,28 +145,28 @@ const prepareDOMEvents = () => {
 	});
 
 	calcAdd.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butAdd.setoperand();
 		butAdd.displayFunction();
 	});
 	calcSubstract.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butSubstract.setoperand();
 		butSubstract.displayFunction();
 	});
 	calcMultiply.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butMultiply.setoperand();
 		butMultiply.displayFunction();
 	});
 	calcDivide.addEventListener("click", () => {
-		if (operand.char != "") {
+		if (operand.char != "" && butNumbOne.display != "") {
 			resultFunction();
 		}
 		butDivide.setoperand();
@@ -200,6 +200,7 @@ const butNine = new buttonValue("9");
 let butNumbOne = new buttonValue("");
 let butNumbTwo = new buttonValue("");
 let resultNumb = new buttonValue("");
+let floatNumbOne = new buttonValue("");
 
 function buttonFunction(char) {
 	this.char = char;
@@ -221,42 +222,40 @@ buttonValue.prototype.displayValue = function () {
 	valueString.textContent += this.display;
 };
 buttonValue.prototype.getNumb = function () {
-	if (
-		valueDisplay.textContent.includes(",") == true ||
-		valueString.textContent.includes(",")
-	) {
-		butNumbOne.display += "," + this.display;
-		console.log(butNumbOne.display);
-		console.log("1.0");
-	}
 	butNumbOne.display += this.display;
-	butNumbOne.display = parseInt(butNumbOne.display);
+	if (butNumbOne.display.includes(".")) {
+		butNumbOne.display = parseFloat(butNumbOne.display);
+		console.log("float");
+	} else butNumbOne.display = parseInt(butNumbOne.display);
 	console.log(butNumbOne.display);
-	console.log("1");
+	console.log("numb1");
 };
 buttonValue.prototype.getNumbTwo = function () {
 	butNumbTwo.display += this.display;
-	butNumbTwo.display = parseInt(butNumbTwo.display);
+	if (butNumbTwo.display.includes(".")) {
+		butNumbTwo.display = parseFloat(butNumbTwo.display);
+		console.log("float2");
+	} else butNumbTwo.display = parseInt(butNumbTwo.display);
 	console.log(butNumbTwo.display);
-	console.log("2");
+	console.log("numb2");
 };
 
 buttonFunction.prototype.displayFunction = function () {
-	if (butNumbOne.display >= 0 && valueNumbResult.textContent == "") {
+	if (butNumbOne.display != "" && valueNumbResult.textContent == "") {
 		valueDisplay.classList.remove("opacity-0");
 		valueDisplay.textContent = this.char;
 		valueString.textContent = "";
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display >= "" && valueNumbResult.textContent == "") {
+	if (butNumbOne.display != "" && valueNumbResult.textContent == "") {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
 };
 
 function resultFunction() {
-	if (resultNumb.display === "") {
+	if (resultNumb.display === "" && butNumbOne.display != "") {
 		if (operand.char == "+") {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
@@ -316,19 +315,10 @@ function resultFunction() {
 	}
 	valueString.textContent = "";
 	butNumbTwo.display = "";
+	// TODO: added butNumbOne.display = ""; to check resultNumb dot adding and if it crash others function
+	butNumbOne.display = "";
 	valueDisplay.textContent = "";
 	operand.char = "";
-}
-
-function intToFloat() {
-	if (valueDisplay.textContent == "0" || valueDisplay.textContent == "") {
-		valueDisplay.textContent += ",";
-		if (valueNumbResult.textContent.includes(",") == false) {
-			valueNumbResult.textContent += ",0";
-		} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
-			valueString.textContent += ",";
-		}
-	}
 }
 
 function resultNumbHandler() {
@@ -337,6 +327,44 @@ function resultNumbHandler() {
 		butNumbOne.display = "";
 		butNumbTwo.display = "";
 		operand.char = "";
+	}
+}
+
+function intToFloat() {
+	if (
+		valueDisplay.textContent == "0" &&
+		butNumbOne.display == "" &&
+		resultNumb.display == "" &&
+		resultNumb.display == ""
+	) {
+		valueDisplay.classList.add("opacity-0");
+		valueString.textContent = "0,";
+		butNumbOne.display = "0.";
+		console.log("displaydot");
+	} else if (butNumbOne.display != "" && valueDisplay.textContent != "") {
+		valueDisplay.textContent = "";
+		valueString.textContent = "0,";
+		butNumbTwo.display = "0.";
+		console.log("displaydot2");
+	} else if (
+		butNumbOne.display != "" &&
+		butNumbTwo.display == "" &&
+		operand.char == "" &&
+		resultNumb != ""
+	) {
+		valueString.textContent += ",";
+		butNumbOne.display += ".";
+		console.log("dot1");
+	} else if (butNumbTwo.display != "") {
+		valueString.textContent += ",";
+		butNumbTwo.display += ".";
+		console.log("dot2");
+	} else if (resultNumb.display != "") {
+		resultNumb.display = "";
+		valueNumbResult.textContent = "";
+		valueString.textContent = "0,";
+		butNumbOne.display = "0.";
+		console.log("displaydotAfterResult");
 	}
 }
 
