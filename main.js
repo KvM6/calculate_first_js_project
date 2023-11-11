@@ -226,6 +226,7 @@ buttonValue.prototype.getNumb = function () {
 	if (butNumbOne.display.includes(".")) {
 		if (butNumbOne.display == 0) {
 			console.log(butNumbOne.display);
+			console.log(valueString.textContent.length);
 		} else butNumbOne.display = parseFloat(butNumbOne.display);
 		console.log("float");
 	} else butNumbOne.display = parseInt(butNumbOne.display);
@@ -235,7 +236,9 @@ buttonValue.prototype.getNumb = function () {
 buttonValue.prototype.getNumbTwo = function () {
 	butNumbTwo.display += this.display;
 	if (butNumbTwo.display.includes(".")) {
-		butNumbTwo.display = parseFloat(butNumbTwo.display);
+		if (butNumbTwo.display == 0) {
+			console.log(butNumbTwo.display);
+		} else butNumbTwo.display = parseFloat(butNumbTwo.display);
 		console.log("float2");
 	} else butNumbTwo.display = parseInt(butNumbTwo.display);
 	console.log(butNumbTwo.display);
@@ -368,6 +371,10 @@ function intToFloat() {
 		butNumbOne.display = "0.";
 		console.log("displaydotAfterResult");
 	}
+}
+
+function floatPrecision () {
+	
 }
 
 function resetValue() {
