@@ -224,7 +224,9 @@ buttonValue.prototype.displayValue = function () {
 buttonValue.prototype.getNumb = function () {
 	butNumbOne.display += this.display;
 	if (butNumbOne.display.includes(".")) {
-		butNumbOne.display = parseFloat(butNumbOne.display);
+		if (butNumbOne.display == 0) {
+			console.log(butNumbOne.display);
+		} else butNumbOne.display = parseFloat(butNumbOne.display);
 		console.log("float");
 	} else butNumbOne.display = parseInt(butNumbOne.display);
 	console.log(butNumbOne.display);
