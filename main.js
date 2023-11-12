@@ -226,7 +226,6 @@ buttonValue.prototype.getNumb = function () {
 	if (butNumbOne.display.includes(".")) {
 		if (butNumbOne.display == 0) {
 			console.log(butNumbOne.display);
-			console.log(valueString.textContent.length);
 		} else butNumbOne.display = parseFloat(butNumbOne.display);
 		console.log("float");
 	} else butNumbOne.display = parseInt(butNumbOne.display);
@@ -318,6 +317,8 @@ function resultFunction() {
 			console.log(resultNumb.display);
 		}
 	}
+	console.log(valueString.textContent.length);
+	floatPrecision();
 	valueString.textContent = "";
 	butNumbTwo.display = "";
 	// TODO: added butNumbOne.display = ""; to check resultNumb dot adding and if it crash others function
@@ -343,12 +344,15 @@ function intToFloat() {
 		resultNumb.display == ""
 	) {
 		valueDisplay.classList.add("opacity-0");
-		valueString.textContent = "0,";
+		valueString.textContent = "0.";
 		butNumbOne.display = "0.";
 		console.log("displaydot");
-	} else if (butNumbOne.display != "" && valueDisplay.textContent != "") {
+	} else if (
+		(butNumbOne.display != "" && valueString.textContent != "") ||
+		valueDisplay.textContent != ""
+	) {
 		valueDisplay.textContent = "";
-		valueString.textContent = "0,";
+		valueString.textContent = "0.";
 		butNumbTwo.display = "0.";
 		console.log("displaydot2");
 	} else if (
@@ -373,8 +377,26 @@ function intToFloat() {
 	}
 }
 
-function floatPrecision () {
-	
+function floatPrecision() {
+	if (
+		valueString.textContent.includes(".") &&
+		valueString.textContent.length < 4
+	) {
+		console.log("precision1");
+		resultNumb.display = resultNumb.display.toFixed(1);
+		valueNumbResult.textContent = resultNumb.display;
+		resultNumb.display = parseFloat(resultNumb.display);
+		console.log(resultNumb.display);
+	} else if (
+		valueString.textContent.includes(".") &&
+		valueString.textContent.length < 5
+	) {
+		console.log("precision2");
+		resultNumb.display = resultNumb.display.toFixed(2);
+		valueNumbResult.textContent = resultNumb.display;
+		resultNumb.display = parseFloat(resultNumb.display);
+		console.log(resultNumb.display);
+	}
 }
 
 function resetValue() {
