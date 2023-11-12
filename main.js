@@ -245,14 +245,15 @@ buttonValue.prototype.getNumbTwo = function () {
 };
 
 buttonFunction.prototype.displayFunction = function () {
-	if (butNumbOne.display != "" && valueNumbResult.textContent == "") {
+	if (butNumbOne.display != "" || resultNumb.display != "") {
 		valueDisplay.classList.remove("opacity-0");
 		valueDisplay.textContent = this.char;
+		valueNumbResult.textContent = "";
 		valueString.textContent = "";
 	}
 };
 buttonFunction.prototype.setoperand = function () {
-	if (butNumbOne.display != "" && valueNumbResult.textContent == "") {
+	if (butNumbOne.display != "" || resultNumb.display != "") {
 		operand.char = this.char;
 		console.log(operand.char);
 	}
@@ -299,31 +300,32 @@ function resultFunction() {
 		}
 	} else if (resultNumb.display != "" && butNumbTwo.display != "") {
 		if (operand.char == "+") {
-			resultNumb.display += butNumbOne.display + butNumbTwo.display;
+			resultNumb.display += butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 			console.log("test3");
 		} else if (operand.char == "-") {
-			resultNumb.display -= butNumbOne.display + butNumbTwo.display;
+			resultNumb.display -= butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 		} else if (operand.char == "x") {
-			resultNumb.display *= butNumbOne.display + butNumbTwo.display;
+			resultNumb.display *= butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 		} else if (operand.char == "/") {
-			resultNumb.display /= butNumbOne.display + butNumbTwo.display;
+			resultNumb.display /= butNumbTwo.display;
 			valueNumbResult.textContent = resultNumb.display;
 			console.log(resultNumb.display);
 		}
 	}
-	console.log(valueString.textContent.length);
-	floatPrecision();
+	if (butNumbOne.display != "" && butNumbTwo.display != "") {
+		floatPrecision();
+	}
 	valueString.textContent = "";
 	butNumbTwo.display = "";
 	// TODO: added butNumbOne.display = ""; to check resultNumb dot adding and if it crash others function
 	butNumbOne.display = "";
-	valueDisplay.textContent = "";
+	// valueDisplay.textContent = "";
 	operand.char = "";
 }
 
