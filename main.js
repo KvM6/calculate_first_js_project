@@ -223,23 +223,12 @@ buttonValue.prototype.displayValue = function () {
 };
 buttonValue.prototype.getNumb = function () {
 	butNumbOne.display += this.display;
-	if (butNumbOne.display.includes(".")) {
-		if (butNumbOne.display == 0) {
-			console.log(butNumbOne.display);
-		} else butNumbOne.display = parseFloat(butNumbOne.display);
-		console.log("float");
-	} else butNumbOne.display = parseInt(butNumbOne.display);
 	console.log(butNumbOne.display);
 	console.log("numb1");
+	console.log(butNumbOne.display.length);
 };
 buttonValue.prototype.getNumbTwo = function () {
 	butNumbTwo.display += this.display;
-	if (butNumbTwo.display.includes(".")) {
-		if (butNumbTwo.display == 0) {
-			console.log(butNumbTwo.display);
-		} else butNumbTwo.display = parseFloat(butNumbTwo.display);
-		console.log("float2");
-	} else butNumbTwo.display = parseInt(butNumbTwo.display);
 	console.log(butNumbTwo.display);
 	console.log("numb2");
 };
@@ -260,64 +249,54 @@ buttonFunction.prototype.setoperand = function () {
 };
 
 function resultFunction() {
+	if (butNumbOne.display.includes(".")) {
+		if (butNumbOne.display == 0) {
+			console.log(butNumbOne.display);
+		} else butNumbOne.display = parseFloat(butNumbOne.display);
+		console.log("float");
+	} else butNumbOne.display = parseInt(butNumbOne.display);
+
+	if (butNumbTwo.display.includes(".")) {
+		if (butNumbTwo.display == 0) {
+			console.log(butNumbTwo.display);
+		} else butNumbTwo.display = parseFloat(butNumbTwo.display);
+		console.log("float2");
+	} else butNumbTwo.display = parseInt(butNumbTwo.display);
+
 	if (resultNumb.display === "" && butNumbOne.display != "") {
 		if (operand.char == "+") {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
-			console.log("test1");
 		} else if (operand.char == "-") {
 			resultNumb.display = butNumbOne.display - butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		} else if (operand.char == "x") {
 			resultNumb.display = butNumbOne.display * butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		}
 	} else if (resultNumb.display != "" && butNumbTwo.display === "") {
 		if (operand.char == "+") {
 			resultNumb.display += butNumbOne.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
-			console.log("test2");
 		} else if (operand.char == "-") {
 			resultNumb.display -= butNumbOne.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		} else if (operand.char == "x") {
 			resultNumb.display *= butNumbOne.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		} else if (operand.char == "/") {
 			resultNumb.display /= butNumbOne.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		}
 	} else if (resultNumb.display != "" && butNumbTwo.display != "") {
 		if (operand.char == "+") {
 			resultNumb.display += butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
-			console.log("test3");
 		} else if (operand.char == "-") {
 			resultNumb.display -= butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		} else if (operand.char == "x") {
 			resultNumb.display *= butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		} else if (operand.char == "/") {
 			resultNumb.display /= butNumbTwo.display;
-			valueNumbResult.textContent = resultNumb.display;
-			console.log(resultNumb.display);
 		}
 	}
+	resultNumb.display = resultNumb.display.toString();
+	valueNumbResult.textContent = resultNumb.display;
+	console.log(resultNumb.display);
 	if (butNumbOne.display != "" && butNumbTwo.display != "") {
 		floatPrecision();
 	}
@@ -380,24 +359,55 @@ function intToFloat() {
 }
 
 function floatPrecision() {
-	if (
-		valueString.textContent.includes(".") &&
-		valueString.textContent.length < 4
-	) {
-		console.log("precision1");
-		resultNumb.display = resultNumb.display.toFixed(1);
-		valueNumbResult.textContent = resultNumb.display;
-		resultNumb.display = parseFloat(resultNumb.display);
-		console.log(resultNumb.display);
-	} else if (
-		valueString.textContent.includes(".") &&
-		valueString.textContent.length < 5
-	) {
-		console.log("precision2");
-		resultNumb.display = resultNumb.display.toFixed(2);
-		valueNumbResult.textContent = resultNumb.display;
-		resultNumb.display = parseFloat(resultNumb.display);
-		console.log(resultNumb.display);
+	if (valueString.textContent.includes(".")) {
+		if (resultNumb.display.length < 2) {
+			console.log("precision1");
+			resultNumb.display = resultNumb.display.toFixed(1);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+			console.log(resultNumb.display);
+		} else if (resultNumb.display.length < 3) {
+			console.log("precision2");
+			resultNumb.display = resultNumb.display.toFixed(2);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+			console.log(resultNumb.display);
+		} else if (resultNumb.display.length < 4) {
+			console.log("precision3");
+			resultNumb.display = resultNumb.display.toFixed(3);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+		} else if (resultNumb.display.length < 5) {
+			console.log("precision4");
+			resultNumb.display = resultNumb.display.toFixed(4);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+		} else if (resultNumb.display.length < 6) {
+			console.log("precision5");
+			resultNumb.display = resultNumb.display.toFixed(5);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+		} else if (resultNumb.display.length < 7) {
+			console.log("precision6");
+			resultNumb.display = resultNumb.display.toFixed(6);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+		} else if (resultNumb.display.length < 8) {
+			console.log("precision7");
+			resultNumb.display = resultNumb.display.toFixed(7);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+		} else if (resultNumb.display.length < 9) {
+			console.log("precision8");
+			resultNumb.display = resultNumb.display.toFixed(8);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+		} else if (resultNumb.display.length < 10) {
+			console.log("precision9");
+			resultNumb.display = resultNumb.display.toFixed(9);
+			valueNumbResult.textContent = resultNumb.display;
+			resultNumb.display = parseFloat(resultNumb.display);
+		}
 	}
 }
 
