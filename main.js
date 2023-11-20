@@ -225,7 +225,6 @@ buttonValue.prototype.getNumb = function () {
 	butNumbOne.display += this.display;
 	console.log(butNumbOne.display);
 	console.log("numb1");
-	console.log(butNumbOne.display.length);
 };
 buttonValue.prototype.getNumbTwo = function () {
 	butNumbTwo.display += this.display;
@@ -294,12 +293,17 @@ function resultFunction() {
 			resultNumb.display /= butNumbTwo.display;
 		}
 	}
-	resultNumb.display = resultNumb.display.toString();
-	valueNumbResult.textContent = resultNumb.display;
-	console.log(resultNumb.display);
+
+	butNumbOne.display += "";
+	butNumbTwo.display += "";
+
 	if (butNumbOne.display != "" && butNumbTwo.display != "") {
 		floatPrecision();
 	}
+
+	valueNumbResult.textContent = resultNumb.display;
+	console.log(resultNumb.display);
+
 	valueString.textContent = "";
 	butNumbTwo.display = "";
 	// TODO: added butNumbOne.display = ""; to check resultNumb dot adding and if it crash others function
@@ -360,49 +364,73 @@ function intToFloat() {
 
 function floatPrecision() {
 	if (valueString.textContent.includes(".")) {
-		if (resultNumb.display.length < 2) {
+		if (butNumbOne.display.length == 3 || butNumbTwo.display.length == 3) {
 			console.log("precision1");
 			resultNumb.display = resultNumb.display.toFixed(1);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
 			console.log(resultNumb.display);
-		} else if (resultNumb.display.length < 3) {
+		} else if (
+			butNumbOne.display.length == 4 ||
+			butNumbTwo.display.length == 4
+		) {
 			console.log("precision2");
 			resultNumb.display = resultNumb.display.toFixed(2);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
 			console.log(resultNumb.display);
-		} else if (resultNumb.display.length < 4) {
+		} else if (
+			butNumbOne.display.length == 5 ||
+			butNumbTwo.display.length == 5
+		) {
 			console.log("precision3");
 			resultNumb.display = resultNumb.display.toFixed(3);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (resultNumb.display.length < 5) {
+		} else if (
+			butNumbOne.display.length == 6 ||
+			butNumbTwo.display.length == 6
+		) {
 			console.log("precision4");
 			resultNumb.display = resultNumb.display.toFixed(4);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (resultNumb.display.length < 6) {
+		} else if (
+			butNumbOne.display.length == 7 ||
+			butNumbTwo.display.length == 7
+		) {
 			console.log("precision5");
 			resultNumb.display = resultNumb.display.toFixed(5);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (resultNumb.display.length < 7) {
+		} else if (
+			butNumbOne.display.length == 8 ||
+			butNumbTwo.display.length == 8
+		) {
 			console.log("precision6");
 			resultNumb.display = resultNumb.display.toFixed(6);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (resultNumb.display.length < 8) {
+		} else if (
+			butNumbOne.display.length == 9 ||
+			butNumbTwo.display.length == 9
+		) {
 			console.log("precision7");
 			resultNumb.display = resultNumb.display.toFixed(7);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (resultNumb.display.length < 9) {
+		} else if (
+			butNumbOne.display.length == 10 ||
+			butNumbTwo.display.length == 10
+		) {
 			console.log("precision8");
 			resultNumb.display = resultNumb.display.toFixed(8);
 			valueNumbResult.textContent = resultNumb.display;
 			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (resultNumb.display.length < 10) {
+		} else if (
+			butNumbOne.display.length == 11 ||
+			butNumbTwo.display.length == 11
+		) {
 			console.log("precision9");
 			resultNumb.display = resultNumb.display.toFixed(9);
 			valueNumbResult.textContent = resultNumb.display;
