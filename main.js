@@ -297,8 +297,16 @@ function resultFunction() {
 	butNumbOne.display += "";
 	butNumbTwo.display += "";
 
-	if (butNumbOne.display != "" && butNumbTwo.display != "") {
-		floatPrecision();
+	if (
+		butNumbOne.display != "" &&
+		butNumbTwo.display != "" &&
+		valueString.textContent.includes(".")
+	) {
+		if (butNumbOne.display.length > butNumbTwo.display.length) {
+			floatPrecisionOne();
+		} else if (butNumbOne.display.length < butNumbTwo.display.length) {
+			floatPrecisionTwo();
+		} else floatPrecisionOne();
 	}
 
 	valueNumbResult.textContent = resultNumb.display;
@@ -356,86 +364,91 @@ function intToFloat() {
 	} else if (resultNumb.display != "") {
 		resultNumb.display = "";
 		valueNumbResult.textContent = "";
-		valueString.textContent = "0,";
+		valueString.textContent = "0.";
 		butNumbOne.display = "0.";
 		console.log("displaydotAfterResult");
 	}
 }
 
-function floatPrecision() {
-	if (valueString.textContent.includes(".")) {
-		if (butNumbOne.display.length == 3 || butNumbTwo.display.length == 3) {
-			console.log("precision1");
-			resultNumb.display = resultNumb.display.toFixed(1);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-			console.log(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 4 ||
-			butNumbTwo.display.length == 4
-		) {
-			console.log("precision2");
-			resultNumb.display = resultNumb.display.toFixed(2);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-			console.log(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 5 ||
-			butNumbTwo.display.length == 5
-		) {
-			console.log("precision3");
-			resultNumb.display = resultNumb.display.toFixed(3);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 6 ||
-			butNumbTwo.display.length == 6
-		) {
-			console.log("precision4");
-			resultNumb.display = resultNumb.display.toFixed(4);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 7 ||
-			butNumbTwo.display.length == 7
-		) {
-			console.log("precision5");
-			resultNumb.display = resultNumb.display.toFixed(5);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 8 ||
-			butNumbTwo.display.length == 8
-		) {
-			console.log("precision6");
-			resultNumb.display = resultNumb.display.toFixed(6);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 9 ||
-			butNumbTwo.display.length == 9
-		) {
-			console.log("precision7");
-			resultNumb.display = resultNumb.display.toFixed(7);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 10 ||
-			butNumbTwo.display.length == 10
-		) {
-			console.log("precision8");
-			resultNumb.display = resultNumb.display.toFixed(8);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-		} else if (
-			butNumbOne.display.length == 11 ||
-			butNumbTwo.display.length == 11
-		) {
-			console.log("precision9");
-			resultNumb.display = resultNumb.display.toFixed(9);
-			valueNumbResult.textContent = resultNumb.display;
-			resultNumb.display = parseFloat(resultNumb.display);
-		}
+function floatPrecisionOne() {
+	console.log("precisionOne");
+	if (butNumbOne.display.length <= 3) {
+		console.log("precision1");
+		resultNumb.display = resultNumb.display.toFixed(1);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length <= 4) {
+		console.log("precision2");
+		resultNumb.display = resultNumb.display.toFixed(2);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 5) {
+		console.log("precision3");
+		resultNumb.display = resultNumb.display.toFixed(3);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 6) {
+		console.log("precision4");
+		resultNumb.display = resultNumb.display.toFixed(4);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 7) {
+		console.log("precision5");
+		resultNumb.display = resultNumb.display.toFixed(5);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 8) {
+		console.log("precision6");
+		resultNumb.display = resultNumb.display.toFixed(6);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 9) {
+		console.log("precision7");
+		resultNumb.display = resultNumb.display.toFixed(7);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 10) {
+		console.log("precision8");
+		resultNumb.display = resultNumb.display.toFixed(8);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 11) {
+		console.log("precision9");
+		resultNumb.display = resultNumb.display.toFixed(9);
+		valueNumbResult.textContent = resultNumb.display;
+	}
+}
+
+function floatPrecisionTwo() {
+	console.log("precisionTwo");
+	if (butNumbTwo.display.length <= 3) {
+		console.log("precision1");
+		resultNumb.display = resultNumb.display.toFixed(1);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbTwo.display.length <= 4) {
+		console.log("precision2");
+		resultNumb.display = resultNumb.display.toFixed(2);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 5) {
+		console.log("precision3");
+		resultNumb.display = resultNumb.display.toFixed(3);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 6) {
+		console.log("precision4");
+		resultNumb.display = resultNumb.display.toFixed(4);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 7) {
+		console.log("precision5");
+		resultNumb.display = resultNumb.display.toFixed(5);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 8) {
+		console.log("precision6");
+		resultNumb.display = resultNumb.display.toFixed(6);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 9) {
+		console.log("precision7");
+		resultNumb.display = resultNumb.display.toFixed(7);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 10) {
+		console.log("precision8");
+		resultNumb.display = resultNumb.display.toFixed(8);
+		valueNumbResult.textContent = resultNumb.display;
+	} else if (butNumbOne.display.length == 11) {
+		console.log("precision9");
+		resultNumb.display = resultNumb.display.toFixed(9);
+		valueNumbResult.textContent = resultNumb.display;
 	}
 }
 
