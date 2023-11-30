@@ -218,8 +218,12 @@ const butReset = new buttonFunction("0");
 let operand = new buttonFunction("");
 
 buttonValue.prototype.displayValue = function () {
-	valueDisplay.classList.add("opacity-0");
-	valueString.textContent += this.display;
+	if (this.display == "0" && butNumbOne.display == 0 || this.display == "0" && butNumbTwo.display == 0) {
+		valueDisplay.textContent = '0'
+	} else {
+		valueString.textContent += this.display;
+		valueDisplay.classList.add("opacity-0");
+	}
 };
 buttonValue.prototype.getNumb = function () {
 	butNumbOne.display += this.display;
@@ -314,9 +318,7 @@ function resultFunction() {
 
 	valueString.textContent = "";
 	butNumbTwo.display = "";
-	// TODO: added butNumbOne.display = ""; to check resultNumb dot adding and if it crash others function
 	butNumbOne.display = "";
-	// valueDisplay.textContent = "";
 	operand.char = "";
 }
 
