@@ -173,7 +173,9 @@ const prepareDOMEvents = () => {
 		butDivide.displayFunction();
 	});
 	calcComma.addEventListener("click", () => {
-		intToFloat();
+		if (valueString.textContent.includes(".")) {
+			console.log("no comma");
+		} else intToFloat();
 	});
 	calcEqual.addEventListener("click", () => {
 		resultFunction();
@@ -218,8 +220,11 @@ const butReset = new buttonFunction("0");
 let operand = new buttonFunction("");
 
 buttonValue.prototype.displayValue = function () {
-	if (this.display == "0" && butNumbOne.display == 0 || this.display == "0" && butNumbTwo.display == 0) {
-		valueDisplay.textContent = '0'
+	if (
+		(this.display == "0" && butNumbOne.display == 0) ||
+		(this.display == "0" && butNumbTwo.display == 0)
+	) {
+		valueDisplay.textContent = "0";
 	} else {
 		valueString.textContent += this.display;
 		valueDisplay.classList.add("opacity-0");
@@ -339,16 +344,20 @@ function intToFloat() {
 		resultNumb.display == ""
 	) {
 		valueDisplay.classList.add("opacity-0");
-		valueString.textContent = "0.";
-		butNumbOne.display = "0.";
+		if (butNumbOne.display != "") {
+			valueString.textContent += ".";
+		} else valueString.textContent += "0.";
+		butNumbOne.display += "0.";
 		console.log("displaydot");
 	} else if (
 		(butNumbOne.display != "" && valueString.textContent != "") ||
 		valueDisplay.textContent != ""
 	) {
 		valueDisplay.textContent = "";
-		valueString.textContent = "0.";
-		butNumbTwo.display = "0.";
+		if (butNumbOne.display != "" && operand.char == "") {
+			valueString.textContent += ".";
+		} else valueString.textContent += "0.";
+		butNumbTwo.display += "0.";
 		console.log("displaydot2");
 	} else if (
 		butNumbOne.display != "" &&
