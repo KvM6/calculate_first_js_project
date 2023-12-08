@@ -338,16 +338,15 @@ function resultNumbHandler() {
 
 function intToFloat() {
 	if (
-		valueDisplay.textContent == "0" &&
-		butNumbOne.display == "" &&
-		resultNumb.display == "" &&
+		// valueDisplay.textContent == "0" &&
+		butNumbOne.display != "" &&
 		resultNumb.display == ""
 	) {
 		valueDisplay.classList.add("opacity-0");
 		if (butNumbOne.display != "") {
 			valueString.textContent += ".";
 		} else valueString.textContent += "0.";
-		butNumbOne.display += "0.";
+		butNumbOne.display += ".";
 		console.log("displaydot");
 	} else if (
 		(butNumbOne.display != "" && valueString.textContent != "") ||
