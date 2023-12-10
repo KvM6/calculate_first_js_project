@@ -343,7 +343,11 @@ function resultNumbHandler() {
 }
 
 function intToFloat() {
-	if (operand.char == "" && butNumbTwo.display == "") {
+	if (
+		operand.char == "" &&
+		butNumbTwo.display == "" &&
+		resultNumb.display == ""
+	) {
 		valueDisplay.classList.add("opacity-0");
 		if (butNumbOne.display != "") {
 			valueString.textContent += ".";
@@ -354,8 +358,7 @@ function intToFloat() {
 		}
 		butNumbOne.display += ".";
 		console.log("displaydot");
-	}
-	else if (operand.char != "" && butNumbOne.display != "") {
+	} else if (operand.char != "" && butNumbOne.display != "") {
 		valueDisplay.classList.add("opacity-0");
 		if (butNumbTwo.display != "") {
 			valueString.textContent += ".";
@@ -365,17 +368,21 @@ function intToFloat() {
 		}
 		butNumbTwo.display += ".";
 		console.log("displaydot2");
+	} else if (resultNumb.display != "" && butNumbOne.display == "") {
+		valueDisplay.classList.add("opacity-0");
+		valueNumbResult.textContent = "";
+		valueString.textContnent = "";
+		resultNumb.display = "";
+		if (butNumbOne.display != "") {
+			valueString.textContent += ".";
+			console.log("dot");
+		} else {
+			valueString.textContent += "0.";
+			console.log("0dot");
+		}
+		butNumbOne.display += ".";
+		console.log("displaydot3");
 	}
-	// else if ((operand.char != butNumbOne.display) != "") {
-	// 	valueDisplay.classList.add("opacity-0");
-	// 	if (butNumbTwo.display == "") {
-	// 		valueString.textContent += "0.";
-	// 		butNumbTwo.display += "0.";
-	// 	} else {
-	// 		valueString.textContent += ".";
-	// 		butNumbTwo.display += ".";
-	// 	}
-	// }
 	// else if (
 	// 	butNumbOne.display != "" &&
 	// 	butNumbTwo.display == "" &&
