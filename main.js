@@ -277,7 +277,7 @@ function resultFunction() {
 		console.log("float2");
 	} else butNumbTwo.display = parseInt(butNumbTwo.display);
 
-	if (resultNumb.display === "" && butNumbOne.display != "") {
+	if (resultNumb.display == "" && butNumbOne.display != "") {
 		if (operand.char == "+") {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
 		} else if (operand.char == "-") {
@@ -287,7 +287,7 @@ function resultFunction() {
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
 		}
-	} else if (resultNumb.display != "" && butNumbTwo.display === "") {
+	} else if (resultNumb.display != "" && butNumbTwo.display == "") {
 		if (operand.char == "+") {
 			resultNumb.display += butNumbOne.display;
 		} else if (operand.char == "-") {
@@ -297,20 +297,39 @@ function resultFunction() {
 		} else if (operand.char == "/") {
 			resultNumb.display /= butNumbOne.display;
 		}
-	} else if (resultNumb.display != "" && butNumbTwo.display != "") {
+	} 
+	// TODO: this condition is probably usless at this point of project
+	
+	// else if (resultNumb.display != "" && butNumbTwo.display != "") {
+	// 	if (operand.char == "+") {
+	// 		resultNumb.display += butNumbTwo.display;
+	// 	} else if (operand.char == "-") {
+	// 		resultNumb.display -= butNumbTwo.display;
+	// 	} else if (operand.char == "x") {
+	// 		resultNumb.display *= butNumbTwo.display;
+	// 	} else if (operand.char == "/") {
+	// 		resultNumb.display /= butNumbTwo.display;
+	// 	}
+	// } 
+	else if (
+		resultNumb.display != "" &&
+		butNumbOne.display != "" &&
+		butNumbTwo.display != ""
+	) {
 		if (operand.char == "+") {
-			resultNumb.display += butNumbTwo.display;
+			resultNumb.display += butNumbOne.display + butNumbTwo.display;
 		} else if (operand.char == "-") {
-			resultNumb.display -= butNumbTwo.display;
+			resultNumb.display -= butNumbOne.display - butNumbTwo.display;
 		} else if (operand.char == "x") {
-			resultNumb.display *= butNumbTwo.display;
+			resultNumb.display *= butNumbOne.display * butNumbTwo.display;
 		} else if (operand.char == "/") {
-			resultNumb.display /= butNumbTwo.display;
+			resultNumb.display /= butNumbOne.display / butNumbTwo.display;
 		}
 	}
-
 	butNumbOne.display += "";
 	butNumbTwo.display += "";
+
+	// TODO: floatPrecision handler
 
 	if (
 		butNumbOne.display != "" &&
