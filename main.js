@@ -280,7 +280,7 @@ function resultFunction() {
 	if (
 		resultNumb.display == "" &&
 		butNumbOne.display != "" &&
-		butNumbOne.display != ""
+		butNumbTwo.display != ""
 	) {
 		if (operand.char == "+") {
 			resultNumb.display = butNumbOne.display + butNumbTwo.display;
@@ -292,11 +292,7 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
 		}
 		console.log("result1");
-	} else if (
-		resultNumb.display != "" &&
-		butNumbOne.display == "" &&
-		butNumbTwo.display != ""
-	) {
+	} else if (resultNumb.display != "" && butNumbOne.display === '' && butNumbTwo.display != "") {
 		if (operand.char == "+") {
 			resultNumb.display += butNumbTwo.display;
 		} else if (operand.char == "-") {
