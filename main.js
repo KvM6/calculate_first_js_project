@@ -268,6 +268,7 @@ function resultFunction() {
 			console.log(butNumbOne.display);
 		} else butNumbOne.display = parseFloat(butNumbOne.display);
 		console.log("float");
+	} else if (butNumbOne.display == "") {
 	} else butNumbOne.display = parseInt(butNumbOne.display);
 
 	if (butNumbTwo.display.includes(".")) {
@@ -278,7 +279,6 @@ function resultFunction() {
 	} else butNumbTwo.display = parseInt(butNumbTwo.display);
 
 	if (
-		resultNumb.display == "" &&
 		butNumbOne.display != "" &&
 		butNumbTwo.display != ""
 	) {
@@ -292,7 +292,11 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
 		}
 		console.log("result1");
-	} else if (resultNumb.display != "" && butNumbOne.display === '' && butNumbTwo.display != "") {
+	} else if (
+		resultNumb.display != "" &&
+		butNumbOne.display == "" &&
+		butNumbTwo.display != ""
+	) {
 		if (operand.char == "+") {
 			resultNumb.display += butNumbTwo.display;
 		} else if (operand.char == "-") {
@@ -303,27 +307,7 @@ function resultFunction() {
 			resultNumb.display /= butNumbTwo.display;
 		}
 		console.log("result2");
-	} else if (
-		resultNumb.display != "" &&
-		butNumbOne.display != "" &&
-		butNumbTwo.display != ""
-	) {
-		resultNumb.display = "";
-
-		if (operand.char == "+") {
-			resultNumb.display = butNumbOne.display + butNumbTwo.display;
-		} else if (operand.char == "-") {
-			resultNumb.display = butNumbOne.display - butNumbTwo.display;
-		} else if (operand.char == "x") {
-			resultNumb.display = butNumbOne.display * butNumbTwo.display;
-		} else if (operand.char == "/") {
-			resultNumb.display = butNumbOne.display / butNumbTwo.display;
-		}
-		console.log("result3");
 	}
-
-	// butNumbOne.display += "";
-	// butNumbTwo.display += "";
 
 	// TODO: floatPrecision handler
 
