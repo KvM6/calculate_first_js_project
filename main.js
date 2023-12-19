@@ -405,57 +405,88 @@ function intToFloat() {
 }
 
 function floatPrecisionOne() {
-	console.log("precisionOne");
-
-	// TODO: To specify float precision clearly I have idea to detect index of "." then slice string to this "." and then use length
-
-	// if (butNumbOne.display.length <= 3) {
-	// 	console.log("precision1");
-	// 	resultNumb.display = resultNumb.display.toFixed(1);
-	// 	valueNumbResult.textContent = resultNumb.display;
-	// }
+	butNumbOne.display += "";
+	butNumbTwo.display += "";
 	const detectDot = ".";
 	let indexOfDot = valueString.textContent.indexOf(detectDot);
-	console.log(`index ${indexOfDot}`);
 	valueString.textContent = valueString.textContent.slice(indexOfDot);
-	console.log(`after slice ${valueString.textContent}`);
 
-	if (valueString.textContent.length <= 2) {
-		console.log("precision1");
-		resultNumb.display = resultNumb.display.toFixed(1);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 3) {
-		console.log("precision2");
-		resultNumb.display = resultNumb.display.toFixed(2);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 4) {
-		console.log("precision3");
-		resultNumb.display = resultNumb.display.toFixed(3);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 5) {
-		console.log("precision4");
-		resultNumb.display = resultNumb.display.toFixed(4);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 6) {
-		console.log("precision5");
-		resultNumb.display = resultNumb.display.toFixed(5);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 7) {
-		console.log("precision6");
-		resultNumb.display = resultNumb.display.toFixed(6);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 8) {
-		console.log("precision7");
-		resultNumb.display = resultNumb.display.toFixed(7);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 9) {
-		console.log("precision8");
-		resultNumb.display = resultNumb.display.toFixed(8);
-		valueNumbResult.textContent = resultNumb.display;
-	} else if (valueString.textContent.length == 10) {
-		console.log("precision9");
-		resultNumb.display = resultNumb.display.toFixed(9);
-		valueNumbResult.textContent = resultNumb.display;
+	if (butNumbOne.display.length > butNumbTwo.display.length) {
+		if (butNumbOne.display.length == 3) {
+			console.log("precision22");
+			resultNumb.display = resultNumb.display.toFixed(1);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 4) {
+			console.log("precision33");
+			resultNumb.display = resultNumb.display.toFixed(2);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 5) {
+			console.log("precision4");
+			resultNumb.display = resultNumb.display.toFixed(3);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 6) {
+			console.log("precision5");
+			resultNumb.display = resultNumb.display.toFixed(4);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 7) {
+			console.log("precision6");
+			resultNumb.display = resultNumb.display.toFixed(5);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 8) {
+			console.log("precision7");
+			resultNumb.display = resultNumb.display.toFixed(6);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 9) {
+			console.log("precision8");
+			resultNumb.display = resultNumb.display.toFixed(7);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 10) {
+			console.log("precision9");
+			resultNumb.display = resultNumb.display.toFixed(8);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (butNumbOne.display.length == 11) {
+			console.log("precision9");
+			resultNumb.display = resultNumb.display.toFixed(9);
+			valueNumbResult.textContent = resultNumb.display;
+		}
+	} else {
+		if (valueString.textContent.length <= 2) {
+			console.log("precision1");
+			resultNumb.display = resultNumb.display.toFixed(1);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 3) {
+			console.log("precision2");
+			resultNumb.display = resultNumb.display.toFixed(2);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 4) {
+			console.log("precision3");
+			resultNumb.display = resultNumb.display.toFixed(3);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 5) {
+			console.log("precision4");
+			resultNumb.display = resultNumb.display.toFixed(4);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 6) {
+			console.log("precision5");
+			resultNumb.display = resultNumb.display.toFixed(5);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 7) {
+			console.log("precision6");
+			resultNumb.display = resultNumb.display.toFixed(6);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 8) {
+			console.log("precision7");
+			resultNumb.display = resultNumb.display.toFixed(7);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 9) {
+			console.log("precision8");
+			resultNumb.display = resultNumb.display.toFixed(8);
+			valueNumbResult.textContent = resultNumb.display;
+		} else if (valueString.textContent.length == 10) {
+			console.log("precision9");
+			resultNumb.display = resultNumb.display.toFixed(9);
+			valueNumbResult.textContent = resultNumb.display;
+		}
 	}
 }
 
