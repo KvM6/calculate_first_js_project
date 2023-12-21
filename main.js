@@ -177,6 +177,9 @@ const prepareDOMEvents = () => {
 			console.log("no comma");
 		} else intToFloat();
 	});
+	calcPosNeg.addEventListener("click", () => {
+		posNegconvert();
+	});
 	calcEqual.addEventListener("click", () => {
 		resultFunction();
 	});
@@ -220,12 +223,7 @@ const butReset = new buttonFunction("0");
 let operand = new buttonFunction("");
 
 buttonValue.prototype.displayValue = function () {
-	if (
-		// (this.display == "0" && butNumbOne.display == "0") ||
-		// (this.display == "0" && butNumbTwo.display == "0")
-		this.display == "0" &&
-		valueString.textContent == ""
-	) {
+	if (this.display == "0" && valueString.textContent == "") {
 		valueDisplay.textContent = "0";
 		console.log("ejej");
 	} else {
@@ -306,19 +304,6 @@ function resultFunction() {
 		console.log("result2");
 	}
 
-	// TODO: floatPrecision handler
-
-	// if (
-	// 	butNumbOne.display != "" &&
-	// 	butNumbTwo.display != "" &&
-	// 	valueString.textContent.includes(".")
-	// ) {
-	// 	if (butNumbOne.display.length > butNumbTwo.display.length) {
-	// 		floatPrecisionOne();
-	// 	} else if (butNumbOne.display.length < butNumbTwo.display.length) {
-	// 		floatPrecisionTwo();
-	// 	} else floatPrecisionOne();
-	// }
 	valueNumbResult.textContent = resultNumb.display;
 	console.log(resultNumb.display);
 
@@ -380,28 +365,6 @@ function intToFloat() {
 		butNumbOne.display += ".";
 		console.log("displaydot3");
 	}
-	// TODO: this condition is probably usless at this point of project
-
-	// else if (
-	// 	butNumbOne.display != "" &&
-	// 	butNumbTwo.display == "" &&
-	// 	operand.char == "" &&
-	// 	resultNumb != ""
-	// ) {
-	// 	valueString.textContent += ".";
-	// 	butNumbOne.display += ".";
-	// 	console.log("dot1");
-	// } else if (butNumbTwo.display != "") {
-	// 	valueString.textContent += ".";
-	// 	butNumbTwo.display += ".";
-	// 	console.log("dot2");
-	// } else if (resultNumb.display != "") {
-	// 	resultNumb.display = "";
-	// 	valueNumbResult.textContent = "";
-	// 	valueString.textContent = "0.";
-	// 	butNumbOne.display = "0.";
-	// 	console.log("displaydotAfterResult");
-	// }
 }
 
 function floatPrecisionOne() {
@@ -488,6 +451,14 @@ function floatPrecisionOne() {
 			valueNumbResult.textContent = resultNumb.display;
 		}
 	}
+}
+
+// TODO: remamber to be carefull with 0, it have to add "-" only one time
+
+function posNegconvert() {
+	if (this.char == "+/-" && valueString.textContent.includes("-")) {
+		valueString.textContent.replace("-", "");
+	} else valueString.textContent = "-" + valueString.textContent;
 }
 
 function resetValue() {
