@@ -456,9 +456,13 @@ function floatPrecisionOne() {
 // TODO: remamber to be carefull with 0, it have to add "-" only one time
 
 function posNegconvert() {
-	if (this.char == "+/-" && valueString.textContent.includes("-")) {
-		valueString.textContent.replace("-", "");
-	} else valueString.textContent = "-" + valueString.textContent;
+	if (valueString.textContent.includes("-")) {
+		valueString.textContent = valueString.textContent.replace("-", "");
+		console.log("+");
+	} else {
+		valueString.textContent = "-" + valueString.textContent;
+		console.log("-");
+	}
 }
 
 function resetValue() {
