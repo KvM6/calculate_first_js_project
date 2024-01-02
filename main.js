@@ -453,14 +453,26 @@ function floatPrecisionOne() {
 	}
 }
 
-// TODO: remamber to be carefull with 0, it have to add "-" only one time
+// TODO: remamber to be carefull with 0
 
 function posNegconvert() {
-	if (valueString.textContent.includes("-")) {
+	if (
+		valueString.textContent.includes("-") ||
+		valueDisplay.textContent.includes("-")
+	) {
 		valueString.textContent = valueString.textContent.replace("-", "");
+		valueDisplay.textContent = valueDisplay.textContent.replace("-", "");
 		console.log("+");
 	} else {
-		valueString.textContent = "-" + valueString.textContent;
+		if (valueDisplay.textContent == "0" && butNumbOne.display == "") {
+			// valueDisplay.textContent = "-" + valueDisplay.textContent;
+			valueDisplay.classList.add("opacity-0");
+			
+		} else valueString.textContent = "-" + valueString.textContent;
+
+		if (butNumbOne.display != "" && butNumbTwo.display == "") {
+			butNumbOne.display = "-" + butNumbOne.display;
+		} else butNumbTwo.display = "-" + butNumbTwo.display;
 		console.log("-");
 	}
 }
