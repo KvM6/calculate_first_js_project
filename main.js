@@ -235,6 +235,11 @@ buttonValue.prototype.displayValue = function () {
 buttonValue.prototype.getNumb = function () {
 	if (this.display == "0" && butNumbOne.display == 0) {
 	} else butNumbOne.display += this.display;
+	if (valueDisplay.textContent == "-0") {
+		valueString.textContent = "-" + valueString.textContent;
+		butNumbOne.display = "-" + butNumbOne.display;
+		valueDisplay.textContent = "";
+	}
 	console.log(butNumbOne.display);
 	console.log("numb1");
 };
@@ -465,9 +470,7 @@ function posNegconvert() {
 		console.log("+");
 	} else {
 		if (valueDisplay.textContent == "0" && butNumbOne.display == "") {
-			// valueDisplay.textContent = "-" + valueDisplay.textContent;
-			valueDisplay.classList.add("opacity-0");
-			
+			valueDisplay.textContent = "-" + valueDisplay.textContent;
 		} else valueString.textContent = "-" + valueString.textContent;
 
 		if (butNumbOne.display != "" && butNumbTwo.display == "") {
