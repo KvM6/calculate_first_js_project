@@ -178,7 +178,7 @@ const prepareDOMEvents = () => {
 		} else intToFloat();
 	});
 	calcPosNeg.addEventListener("click", () => {
-		posNegconvert();
+		posNegConvert();
 	});
 	calcEqual.addEventListener("click", () => {
 		resultFunction();
@@ -312,7 +312,9 @@ function resultFunction() {
 	valueNumbResult.textContent = resultNumb.display;
 	console.log(resultNumb.display);
 
-	floatPrecisionOne();
+	if (valueNumbResult.textContent.includes('.')) {
+		floatPrecisionOne();
+	}
 
 	valueString.textContent = "";
 	butNumbOne.display = "";
@@ -460,13 +462,18 @@ function floatPrecisionOne() {
 
 // TODO: remamber to be carefull with 0
 
-function posNegconvert() {
+function posNegConvert() {
 	if (
 		valueString.textContent.includes("-") ||
 		valueDisplay.textContent.includes("-")
 	) {
 		valueString.textContent = valueString.textContent.replace("-", "");
 		valueDisplay.textContent = valueDisplay.textContent.replace("-", "");
+		if (butNumbOne.display != "" && butNumbTwo.display == "") {
+			butNumbOne.display = butNumbOne.display.replace("-", "");
+		} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
+			butNumbTwo.display = butNumbTwo.display.replace("-", "");
+		}
 		console.log("+");
 	} else {
 		if (valueDisplay.textContent == "0" && butNumbOne.display == "") {
@@ -475,8 +482,10 @@ function posNegconvert() {
 
 		if (butNumbOne.display != "" && butNumbTwo.display == "") {
 			butNumbOne.display = "-" + butNumbOne.display;
-		} else butNumbTwo.display = "-" + butNumbTwo.display;
-		console.log("-");
+		} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
+			butNumbTwo.display = "-" + butNumbTwo.display;
+		}
+			console.log("-");
 	}
 }
 
