@@ -290,6 +290,8 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display * butNumbTwo.display;
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
+		} else if (operand.char == "") {
+			resultNumb.display = butNumbOne.display;
 		}
 		console.log("result1");
 	} else if (
@@ -305,14 +307,15 @@ function resultFunction() {
 			resultNumb.display *= butNumbTwo.display;
 		} else if (operand.char == "/") {
 			resultNumb.display /= butNumbTwo.display;
+		} else if (operand.char == "") {
+			resultNumb.display = butNumbTwo.display;
 		}
 		console.log("result2");
 	}
-
 	valueNumbResult.textContent = resultNumb.display;
 	console.log(resultNumb.display);
 
-	if (valueNumbResult.textContent.includes('.')) {
+	if (valueNumbResult.textContent.includes(".")) {
 		floatPrecisionOne();
 	}
 
@@ -341,6 +344,9 @@ function intToFloat() {
 		if (butNumbOne.display != "") {
 			valueString.textContent += ".";
 			console.log("dot");
+		} else if (valueDisplay.textContent.includes("-")) {
+			valueDisplay.textContent = "";
+			valueString.textContent += "-0.";
 		} else {
 			valueString.textContent += "0.";
 			console.log("0dot");
@@ -485,7 +491,7 @@ function posNegConvert() {
 		} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
 			butNumbTwo.display = "-" + butNumbTwo.display;
 		}
-			console.log("-");
+		console.log("-");
 	}
 }
 
