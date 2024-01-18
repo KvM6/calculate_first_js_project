@@ -315,6 +315,9 @@ function resultFunction() {
 	valueNumbResult.textContent = resultNumb.display;
 	console.log(resultNumb.display);
 
+	// TODO: precision is not working good when example: 5 / 100
+	// it is bc floatPrecision detect numbers not resultFunction. Need to fix it
+
 	if (valueNumbResult.textContent.includes(".")) {
 		floatPrecisionOne();
 	}
@@ -389,35 +392,35 @@ function floatPrecisionOne() {
 
 	if (butNumbOne.display.length > butNumbTwo.display.length) {
 		if (butNumbOne.display.length == 3) {
-			console.log("precision22");
+			console.log("precision11");
 			resultNumb.display = resultNumb.display.toFixed(1);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 4) {
-			console.log("precision33");
+			console.log("precision22");
 			resultNumb.display = resultNumb.display.toFixed(2);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 5) {
-			console.log("precision4");
+			console.log("precision33");
 			resultNumb.display = resultNumb.display.toFixed(3);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 6) {
-			console.log("precision5");
+			console.log("precision44");
 			resultNumb.display = resultNumb.display.toFixed(4);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 7) {
-			console.log("precision6");
+			console.log("precision55");
 			resultNumb.display = resultNumb.display.toFixed(5);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 8) {
-			console.log("precision7");
+			console.log("precision66");
 			resultNumb.display = resultNumb.display.toFixed(6);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 9) {
-			console.log("precision8");
+			console.log("precision77");
 			resultNumb.display = resultNumb.display.toFixed(7);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 10) {
-			console.log("precision9");
+			console.log("precision88");
 			resultNumb.display = resultNumb.display.toFixed(8);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 11) {
@@ -425,7 +428,9 @@ function floatPrecisionOne() {
 			resultNumb.display = resultNumb.display.toFixed(9);
 			valueNumbResult.textContent = resultNumb.display;
 		}
-	} else {
+	} else if (
+		butNumbOne.display.includes("." || butNumbTwo.display.includes("."))
+	) {
 		if (valueString.textContent.length <= 2) {
 			console.log("precision1");
 			resultNumb.display = resultNumb.display.toFixed(1);
