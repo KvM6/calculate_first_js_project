@@ -181,7 +181,9 @@ const prepareDOMEvents = () => {
 		posNegConvert();
 	});
 	calcEqual.addEventListener("click", () => {
+		// if (butNumbOne.display > "" || butNumbTwo.display > "") {
 		resultFunction();
+		// }
 	});
 	calcReset.addEventListener("click", () => {
 		resetValue();
@@ -279,7 +281,9 @@ function resultFunction() {
 			console.log(butNumbTwo.display);
 		} else butNumbTwo.display = parseFloat(butNumbTwo.display);
 		console.log("float2");
-	} else butNumbTwo.display = parseInt(butNumbTwo.display);
+	} else if (butNumbTwo.display > "") {
+		butNumbTwo.display = parseInt(butNumbTwo.display);
+	}
 
 	if (butNumbOne.display != "" && butNumbTwo.display != "") {
 		if (operand.char == "+") {
@@ -290,10 +294,9 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display * butNumbTwo.display;
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
-		} else if (operand.char == "") {
-			resultNumb.display = butNumbOne.display;
 		}
 		console.log("result1");
+		// TODO: example: butNumbOne > '' than pressing = calls bug that display nothing
 	} else if (
 		resultNumb.display != "" &&
 		butNumbOne.display == "" &&
@@ -311,12 +314,12 @@ function resultFunction() {
 			resultNumb.display = butNumbTwo.display;
 		}
 		console.log("result2");
+	} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
+		resultNumb.display = butNumbOne.display;
+		console.log("result3");
 	}
 	valueNumbResult.textContent = resultNumb.display;
 	console.log(resultNumb.display);
-
-	// TODO: precision is not working good when example: 5 / 100
-	// it is bc floatPrecision detect numbers not resultFunction. Need to fix it
 
 	if (valueNumbResult.textContent.includes(".")) {
 		floatPrecisionOne();
@@ -470,8 +473,6 @@ function floatPrecisionOne() {
 		}
 	}
 }
-
-// TODO: remamber to be carefull with 0
 
 function posNegConvert() {
 	if (
