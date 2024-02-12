@@ -180,6 +180,9 @@ const prepareDOMEvents = () => {
 	calcPosNeg.addEventListener("click", () => {
 		posNegConvert();
 	});
+	calcPercentage.addEventListener('click', () => {
+
+	})
 	calcEqual.addEventListener("click", () => {
 		// if (butNumbOne.display > "" || butNumbTwo.display > "") {
 		resultFunction();
@@ -296,7 +299,6 @@ function resultFunction() {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
 		}
 		console.log("result1");
-		// TODO: example: butNumbOne > '' than pressing = calls bug that display nothing
 	} else if (
 		resultNumb.display != "" &&
 		butNumbOne.display == "" &&
@@ -499,6 +501,10 @@ function posNegConvert() {
 		}
 		console.log("-");
 	}
+}
+
+function percentageConverter() {
+	
 }
 
 function resetValue() {
