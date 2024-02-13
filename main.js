@@ -180,9 +180,9 @@ const prepareDOMEvents = () => {
 	calcPosNeg.addEventListener("click", () => {
 		posNegConvert();
 	});
-	calcPercentage.addEventListener('click', () => {
-
-	})
+	calcPercentage.addEventListener("click", () => {
+		percentageConverter();
+	});
 	calcEqual.addEventListener("click", () => {
 		// if (butNumbOne.display > "" || butNumbTwo.display > "") {
 		resultFunction();
@@ -504,7 +504,27 @@ function posNegConvert() {
 }
 
 function percentageConverter() {
-	
+	const percentageValue = "100";
+	if (butNumbOne.dispaly != "" && butNumbTwo.display == "") {
+		butNumbOne.display /= percentageValue;
+		butNumbOne.display += "";
+		valueString.textContent = butNumbOne.display;
+		console.log("%1");
+	} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
+		butNumbTwo.display *= butNumbOne.display;
+		butNumbTwo.display /= percentageValue;
+		butNumbTwo.display += "";
+		valueString.textContent = butNumbTwo.display;
+		console.log("%2");
+	} else if (
+		butNumbOne.display == "" &&
+		butNumbTwo.display == "" &&
+		resultNumb.display != ""
+	) {
+		resultNumb.display /= percentageValue;
+		valueNumbResult.textContent = resultNumb.display;
+		console.log("%3");
+	}
 }
 
 function resetValue() {
