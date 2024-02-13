@@ -505,12 +505,19 @@ function posNegConvert() {
 
 function percentageConverter() {
 	const percentageValue = "100";
-	if (butNumbOne.dispaly != "" && butNumbTwo.display == "") {
+	if (
+		butNumbOne.dispaly != "" &&
+		(butNumbTwo.display == "") & (resultNumb.display == "")
+	) {
 		butNumbOne.display /= percentageValue;
 		butNumbOne.display += "";
 		valueString.textContent = butNumbOne.display;
 		console.log("%1");
-	} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
+	} else if (
+		butNumbOne.display != "" &&
+		butNumbTwo.display != "" &&
+		resultNumb.display == ""
+	) {
 		butNumbTwo.display *= butNumbOne.display;
 		butNumbTwo.display /= percentageValue;
 		butNumbTwo.display += "";
