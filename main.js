@@ -231,7 +231,7 @@ buttonValue.prototype.displayValue = function () {
 	if (this.display == "0" && valueString.textContent == "") {
 		valueDisplay.textContent = "0";
 		console.log("ejej");
-	} else {
+	} else if (butNumbOne.display.length <= 11) {
 		valueString.textContent += this.display;
 		valueDisplay.classList.add("opacity-0");
 		console.log("else");
@@ -269,6 +269,8 @@ buttonFunction.prototype.setoperand = function () {
 		console.log(operand.char);
 	}
 };
+
+function displayValidation() {}
 
 function resultFunction() {
 	if (butNumbOne.display.includes(".")) {
