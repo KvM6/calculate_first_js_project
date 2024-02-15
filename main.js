@@ -231,15 +231,20 @@ buttonValue.prototype.displayValue = function () {
 	if (this.display == "0" && valueString.textContent == "") {
 		valueDisplay.textContent = "0";
 		console.log("ejej");
-	} else if (butNumbOne.display.length <= 11) {
+	} else if (
+		butNumbOne.display.length < 10 &&
+		butNumbTwo.display.length < 10
+	) {
 		valueString.textContent += this.display;
-		valueDisplay.classList.add("opacity-0");
-		console.log("else");
 	}
+	valueDisplay.classList.add("opacity-0");
+	console.log("else");
 };
 buttonValue.prototype.getNumb = function () {
 	if (this.display == "0" && butNumbOne.display == 0) {
-	} else butNumbOne.display += this.display;
+	} else if (butNumbOne.display.length < 10) {
+		butNumbOne.display += this.display;
+	}
 	if (valueDisplay.textContent == "-0") {
 		valueString.textContent = "-" + valueString.textContent;
 		butNumbOne.display = "-" + butNumbOne.display;
@@ -249,8 +254,11 @@ buttonValue.prototype.getNumb = function () {
 	console.log("numb1");
 };
 buttonValue.prototype.getNumbTwo = function () {
-	if (this.display == "0" && butNumbTwo.display == 0) {
-	} else butNumbTwo.display += this.display;
+	// == 0 earlier
+	if (this.display == "0" && butNumbTwo.display == "") {
+	} else if (butNumbTwo.display.length < 10) {
+		butNumbTwo.display += this.display;
+	}
 	console.log(butNumbTwo.display);
 	console.log("numb2");
 };
