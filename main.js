@@ -62,6 +62,15 @@ const prepareDOMEvents = () => {
 			butOne.getNumbTwo();
 		}
 	});
+	// calcOne.addEventListener("keyup", () => {
+	// 	resultNumbHandler();
+	// 	butOne.displayValue();
+	// 	if (operand.char == "") {
+	// 		butOne.getNumb();
+	// 	} else if (operand.char != "" || resultNumb.display != "") {
+	// 		butOne.getNumbTwo();
+	// 	}
+	// });
 	calcTwo.addEventListener("click", () => {
 		resultNumbHandler();
 		butTwo.displayValue();
@@ -235,11 +244,11 @@ buttonValue.prototype.displayValue = function () {
 		// butNumbOne.display.length < 10 ||
 		// butNumbTwo.display.length < 10
 		valueString.textContent.length < 10
-		) {
-			valueString.textContent += this.display;
-			console.log('length work');
+	) {
+		valueString.textContent += this.display;
+		valueDisplay.classList.add("opacity-0");
+		console.log("length work");
 	}
-	valueDisplay.classList.add("opacity-0");
 	console.log("else");
 };
 buttonValue.prototype.getNumb = function () {
