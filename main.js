@@ -209,6 +209,106 @@ const prepareDOMEvents = () => {
 			} else if (operand.char != "" || resultNumb.display != "") {
 				butTwo.getNumbTwo();
 			}
+		} else if (event.key == "3") {
+			resultNumbHandler();
+			butThree.displayValue();
+			if (operand.char == "") {
+				butThree.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butThree.getNumbTwo();
+			}
+		} else if (event.key == "4") {
+			resultNumbHandler();
+			butFour.displayValue();
+			if (operand.char == "") {
+				butFour.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butFour.getNumbTwo();
+			}
+		} else if (event.key == "5") {
+			resultNumbHandler();
+			butFive.displayValue();
+			if (operand.char == "") {
+				butFive.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butFive.getNumbTwo();
+			}
+		} else if (event.key == "6") {
+			resultNumbHandler();
+			butSix.displayValue();
+			if (operand.char == "") {
+				butSix.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butSix.getNumbTwo();
+			}
+		} else if (event.key == "7") {
+			resultNumbHandler();
+			butSeven.displayValue();
+			if (operand.char == "") {
+				butSeven.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butSeven.getNumbTwo();
+			}
+		} else if (event.key == "8") {
+			resultNumbHandler();
+			butEight.displayValue();
+			if (operand.char == "") {
+				butEight.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butEight.getNumbTwo();
+			}
+		} else if (event.key == "9") {
+			resultNumbHandler();
+			butNine.displayValue();
+			if (operand.char == "") {
+				butNine.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butNine.getNumbTwo();
+			}
+		} else if (event.key == "0") {
+			resultNumbHandler();
+			butZero.displayValue();
+			if (operand.char == "") {
+				butZero.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butZero.getNumbTwo();
+			}
+		} else if (event.key == "+") {
+			if (operand.char != "" && butNumbOne.display != "") {
+				resultFunction();
+			}
+			butAdd.setoperand();
+			butAdd.displayFunction();
+		} else if (event.key == "-") {
+			if (operand.char != "" && butNumbOne.display != "") {
+				resultFunction();
+			}
+			butSubstract.setoperand();
+			butSubstract.displayFunction();
+		} else if (event.key == "*") {
+			if (operand.char != "" && butNumbOne.display != "") {
+				resultFunction();
+			}
+			butMultiply.setoperand();
+			butMultiply.displayFunction();
+		} else if (event.key == "/") {
+			if (operand.char != "" && butNumbOne.display != "") {
+				resultFunction();
+			}
+			butDivide.setoperand();
+			butDivide.displayFunction();
+		} else if (event.key == "," || event.key == ".") {
+			if (valueString.textContent.includes(".")) {
+				console.log("no comma");
+			} else intToFloat();
+		} else if (event.key == "|") {
+			posNegConvert();
+		} else if (event.key == "%") {
+			percentageConverter();
+		} else if (event.key == "=" || event.key == "Enter") {
+			resultFunction();
+		} else if (event.key == "Escape") {
+			resetValue();
 		}
 	});
 };
