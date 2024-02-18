@@ -232,10 +232,12 @@ buttonValue.prototype.displayValue = function () {
 		valueDisplay.textContent = "0";
 		console.log("ejej");
 	} else if (
-		butNumbOne.display.length < 10 &&
-		butNumbTwo.display.length < 10
-	) {
-		valueString.textContent += this.display;
+		// butNumbOne.display.length < 10 ||
+		// butNumbTwo.display.length < 10
+		valueString.textContent.length < 10
+		) {
+			valueString.textContent += this.display;
+			console.log('length work');
 	}
 	valueDisplay.classList.add("opacity-0");
 	console.log("else");
