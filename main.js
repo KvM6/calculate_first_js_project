@@ -62,15 +62,6 @@ const prepareDOMEvents = () => {
 			butOne.getNumbTwo();
 		}
 	});
-	// calcOne.addEventListener("keyup", () => {
-	// 	resultNumbHandler();
-	// 	butOne.displayValue();
-	// 	if (operand.char == "") {
-	// 		butOne.getNumb();
-	// 	} else if (operand.char != "" || resultNumb.display != "") {
-	// 		butOne.getNumbTwo();
-	// 	}
-	// });
 	calcTwo.addEventListener("click", () => {
 		resultNumbHandler();
 		butTwo.displayValue();
@@ -199,6 +190,26 @@ const prepareDOMEvents = () => {
 	});
 	calcReset.addEventListener("click", () => {
 		resetValue();
+	});
+
+	addEventListener("keypress", (event) => {
+		if (event.key == "1") {
+			resultNumbHandler();
+			butOne.displayValue();
+			if (operand.char == "") {
+				butOne.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butOne.getNumbTwo();
+			}
+		} else if (event.key == "2") {
+			resultNumbHandler();
+			butTwo.displayValue();
+			if (operand.char == "") {
+				butTwo.getNumb();
+			} else if (operand.char != "" || resultNumb.display != "") {
+				butTwo.getNumbTwo();
+			}
+		}
 	});
 };
 
