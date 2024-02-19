@@ -647,6 +647,14 @@ video {
   grid-template-rows: repeat(6, minmax(0, 1fr));
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
@@ -719,12 +727,12 @@ video {
   padding-right: 2.5rem;
 }
 
-.pt-8 {
-  padding-top: 2rem;
-}
-
 .text-center {
   text-align: center;
+}
+
+.font-main {
+  font-family: "Sixtyfour", sans-serif;";
 }
 
 .text-2xl {

@@ -8,7 +8,11 @@ module.exports = {
 			lg: "992px",
 			xl: "1024px",
 		},
-		extend: {},
+		extend: {
+			fontFamily:{
+				main: ['"Sixtyfour", sans-serif;"']
+			}
+		},
 	},
 	plugins: [],
 };
