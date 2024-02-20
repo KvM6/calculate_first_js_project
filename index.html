@@ -31,31 +31,96 @@
 				id="calculator"
 				class="h-full w-full flex items-center justify-center"
 			>
-				<div id="calcBody" class="h-5/6 w-5/6 relative">
-					<div
+				<div id="calcBody" class="h-5/6 w-5/6 relative  items-center border-2 rounded-lg bg-slate-300">
+					<!-- <div
 						id="calcBackground"
 						class="h-full w-full border-2 rounded-lg bg-slate-300 opacity-20"
-					></div>
+					></div> -->
 					<div
 						id="valueScreen"
-						class="h-16 w-full px-6 absolute top-0 flex items-center justify-end border-b-2 rounded-lg border-b-teal-500 bg-slate-800/20"
+						class="h-16 w-full px-6 mt-2 relative flex items-center justify-end border-b-2 rounded-lg border-b-teal-500 bg-slate-800/10"
 					>
 						<p
 							id="valueDisplay"
-							class="text-2xl font-main text-teal-950 decoration-teal-950"
+							class="text-2xl font-main text-teal-950"
 						>
 							0
 						</p>
 						<p
 							id="valueString"
-							class="text-2xl font-main text-teal-950 decoration-teal-950 overflow-hidden"
+							class="text-2xl font-main text-teal-950 overflow-hidden"
 						></p>
 						<p
 							id="numbResult"
-							class="text-2xl font-main text-teal-950 decoration-teal-950 overflow-hidden"
+							class="text-2xl font-main text-teal-950 overflow-hidden"
 						></p>
 					</div>
 					<div
+						id="calcFunctionBody"
+						class="h-5/6 w-full p-2 my-2 grid grid-cols-4 grid-rows-5 gap-1"
+					>
+						<button id="calcReset" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">AC</p>
+						</button>
+						<button id="calcPosNeg" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">+|-</p>
+						</button>
+						<button id="calcPercentage" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">%</p>
+						</button>
+						<button id="calcDivide" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">/</p>
+						</button>
+						<button id="calcSeven" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">7</p>
+						</button>
+						<button id="calcEight" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">8</p>
+						</button>
+						<button id="calcNine" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">9</p>
+						</button>
+						<button id="calcMultiply" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">x</p>
+						</button>
+						<button id="calcFour" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">4</p>
+						</button>
+						<button id="calcFive" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">5</p>
+						</button>
+						<button id="calcSix" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">6</p>
+						</button>
+						<button id="calcSubstract" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">-</p>
+						</button>
+						<button id="calcOne" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">1</p>
+						</button>
+						<button id="calcTwo" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">2</p>
+						</button>
+						<button id="calcThree" class="h-full w-full bg-slate-800/10">
+							<p class="font-main text-teal-950">3</p>
+						</button>
+						<button id="calcAdd" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">+</p>
+						</button>
+						<button
+							id="calcZero"
+							class="h-full w-full col-span-2 bg-slate-800/10"
+						>
+							<p class="font-main text-teal-950">0</p>
+						</button>
+						<button id="calcComma" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">,</p>
+						</button>
+						<button id="calcEqual" class="h-full w-full bg-slate-800/30">
+							<p class="font-main text-teal-950">=</p>
+						</button>
+					</div>
+					<!-- <div
 						id="calcFunctionBody"
 						class="h-5/6 w-full p-2 absolute top-16 grid grid-cols-4 grid-rows-5 gap-1"
 					>
@@ -119,7 +184,7 @@
 						<button id="calcEqual" class="h-full w-full bg-slate-800/30">
 							<p class="font-main text-teal-950">=</p>
 						</button>
-					</div>
+					</div> -->
 				</div>
 			</section>
 		</main>
