@@ -13,7 +13,7 @@ module.exports = {
 				main: ['"Sixtyfour", sans-serif;"']
 			},
 			width:{
-				md: ['768px']
+				md: ['454px']
 			}
 		},
 	},
