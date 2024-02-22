@@ -11,6 +11,9 @@ module.exports = {
 		extend: {
 			fontFamily:{
 				main: ['"Sixtyfour", sans-serif;"']
+			},
+			width:{
+				md: ['768px']
 			}
 		},
 	},
