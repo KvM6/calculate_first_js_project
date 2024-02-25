@@ -24,7 +24,6 @@ let calcEqual;
 const main = () => {
 	prepareDOMElements();
 	prepareDOMEvents();
-	valueDisplay.textContent = "0";
 };
 
 const prepareDOMElements = () => {
@@ -174,7 +173,7 @@ const prepareDOMEvents = () => {
 	});
 	calcComma.addEventListener("click", () => {
 		if (valueString.textContent.includes(".")) {
-			console.log("no comma");
+			// console.log("no comma");
 		} else intToFloat();
 	});
 	calcPosNeg.addEventListener("click", () => {
@@ -299,7 +298,7 @@ const prepareDOMEvents = () => {
 			butDivide.displayFunction();
 		} else if (event.key == "," || event.key == ".") {
 			if (valueString.textContent.includes(".")) {
-				console.log("no comma");
+				// console.log("no comma");
 			} else intToFloat();
 		} else if (event.key == "|") {
 			posNegConvert();
@@ -350,17 +349,15 @@ let operand = new buttonFunction("");
 buttonValue.prototype.displayValue = function () {
 	if (this.display == "0" && valueString.textContent == "") {
 		valueDisplay.textContent = "0";
-		console.log("ejej");
+		// console.log("ejej");
 	} else if (
-		// butNumbOne.display.length < 10 ||
-		// butNumbTwo.display.length < 10
 		valueString.textContent.length < 10
 	) {
 		valueString.textContent += this.display;
 		valueDisplay.classList.add("opacity-0");
-		console.log("length work");
+		// console.log("length work");
 	}
-	console.log("else");
+	// console.log("else");
 };
 buttonValue.prototype.getNumb = function () {
 	if (this.display == "0" && butNumbOne.display == 0) {
@@ -372,8 +369,8 @@ buttonValue.prototype.getNumb = function () {
 		butNumbOne.display = "-" + butNumbOne.display;
 		valueDisplay.textContent = "";
 	}
-	console.log(butNumbOne.display);
-	console.log("numb1");
+	// console.log(butNumbOne.display);
+	// console.log("numb1");
 };
 buttonValue.prototype.getNumbTwo = function () {
 	// == 0 earlier
@@ -381,8 +378,8 @@ buttonValue.prototype.getNumbTwo = function () {
 	} else if (butNumbTwo.display.length < 10) {
 		butNumbTwo.display += this.display;
 	}
-	console.log(butNumbTwo.display);
-	console.log("numb2");
+	// console.log(butNumbTwo.display);
+	// console.log("numb2");
 };
 
 buttonFunction.prototype.displayFunction = function () {
@@ -396,26 +393,24 @@ buttonFunction.prototype.displayFunction = function () {
 buttonFunction.prototype.setoperand = function () {
 	if (butNumbOne.display != "" || resultNumb.display != "") {
 		operand.char = this.char;
-		console.log(operand.char);
+		// console.log(operand.char);
 	}
 };
-
-function displayValidation() {}
 
 function resultFunction() {
 	if (butNumbOne.display.includes(".")) {
 		if (butNumbOne.display == 0) {
-			console.log(butNumbOne.display);
+			// console.log(butNumbOne.display);
 		} else butNumbOne.display = parseFloat(butNumbOne.display);
-		console.log("float");
+		// console.log("float");
 	} else if (butNumbOne.display == "") {
 	} else butNumbOne.display = parseInt(butNumbOne.display);
 
 	if (butNumbTwo.display.includes(".")) {
 		if (butNumbTwo.display == 0) {
-			console.log(butNumbTwo.display);
+			// console.log(butNumbTwo.display);
 		} else butNumbTwo.display = parseFloat(butNumbTwo.display);
-		console.log("float2");
+		// console.log("float2");
 	} else if (butNumbTwo.display > "") {
 		butNumbTwo.display = parseInt(butNumbTwo.display);
 	}
@@ -430,7 +425,7 @@ function resultFunction() {
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
 		}
-		console.log("result1");
+		// console.log("result1");
 	} else if (
 		resultNumb.display != "" &&
 		butNumbOne.display == "" &&
@@ -447,13 +442,14 @@ function resultFunction() {
 		} else if (operand.char == "") {
 			resultNumb.display = butNumbTwo.display;
 		}
-		console.log("result2");
+		// console.log("result2");
 	} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
 		resultNumb.display = butNumbOne.display;
-		console.log("result3");
+		// console.log("result3");
 	}
+
 	valueNumbResult.textContent = resultNumb.display;
-	console.log(resultNumb.display);
+	// console.log(resultNumb.display);
 
 	if (valueNumbResult.textContent.includes(".")) {
 		floatPrecisionOne();
@@ -483,26 +479,26 @@ function intToFloat() {
 		valueDisplay.classList.add("opacity-0");
 		if (butNumbOne.display != "") {
 			valueString.textContent += ".";
-			console.log("dot");
+			// console.log("dot");
 		} else if (valueDisplay.textContent.includes("-")) {
 			valueDisplay.textContent = "";
 			valueString.textContent += "-0.";
 		} else {
 			valueString.textContent += "0.";
-			console.log("0dot");
+			// console.log("0dot");
 		}
 		butNumbOne.display += ".";
-		console.log("displaydot");
+		// console.log("displaydot");
 	} else if (operand.char != "" && butNumbOne.display != "") {
 		valueDisplay.classList.add("opacity-0");
 		if (butNumbTwo.display != "") {
 			valueString.textContent += ".";
 		} else {
 			valueString.textContent += "0.";
-			console.log("0dot2");
+			// console.log("0dot2");
 		}
 		butNumbTwo.display += ".";
-		console.log("displaydot2");
+		// console.log("displaydot2");
 	} else if (resultNumb.display != "" && butNumbOne.display == "") {
 		valueDisplay.classList.add("opacity-0");
 		valueNumbResult.textContent = "";
@@ -510,13 +506,13 @@ function intToFloat() {
 		resultNumb.display = "";
 		if (butNumbOne.display != "") {
 			valueString.textContent += ".";
-			console.log("dot");
+			// console.log("dot");
 		} else {
 			valueString.textContent += "0.";
-			console.log("0dot");
+			// console.log("0dot");
 		}
 		butNumbOne.display += ".";
-		console.log("displaydot3");
+		// console.log("displaydot3");
 	}
 }
 
@@ -529,39 +525,39 @@ function floatPrecisionOne() {
 
 	if (butNumbOne.display.length > butNumbTwo.display.length) {
 		if (butNumbOne.display.length == 3) {
-			console.log("precision11");
+			// console.log("precision11");
 			resultNumb.display = resultNumb.display.toFixed(1);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 4) {
-			console.log("precision22");
+			// console.log("precision22");
 			resultNumb.display = resultNumb.display.toFixed(2);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 5) {
-			console.log("precision33");
+			// console.log("precision33");
 			resultNumb.display = resultNumb.display.toFixed(3);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 6) {
-			console.log("precision44");
+			// console.log("precision44");
 			resultNumb.display = resultNumb.display.toFixed(4);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 7) {
-			console.log("precision55");
+			// console.log("precision55");
 			resultNumb.display = resultNumb.display.toFixed(5);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 8) {
-			console.log("precision66");
+			// console.log("precision66");
 			resultNumb.display = resultNumb.display.toFixed(6);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 9) {
-			console.log("precision77");
+			// console.log("precision77");
 			resultNumb.display = resultNumb.display.toFixed(7);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 10) {
-			console.log("precision88");
+			// console.log("precision88");
 			resultNumb.display = resultNumb.display.toFixed(8);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (butNumbOne.display.length == 11) {
-			console.log("precision9");
+			// console.log("precision9");
 			resultNumb.display = resultNumb.display.toFixed(9);
 			valueNumbResult.textContent = resultNumb.display;
 		}
@@ -569,39 +565,39 @@ function floatPrecisionOne() {
 		butNumbOne.display.includes("." || butNumbTwo.display.includes("."))
 	) {
 		if (valueString.textContent.length <= 2) {
-			console.log("precision1");
+			// console.log("precision1");
 			resultNumb.display = resultNumb.display.toFixed(1);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 3) {
-			console.log("precision2");
+			// console.log("precision2");
 			resultNumb.display = resultNumb.display.toFixed(2);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 4) {
-			console.log("precision3");
+			// console.log("precision3");
 			resultNumb.display = resultNumb.display.toFixed(3);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 5) {
-			console.log("precision4");
+			// console.log("precision4");
 			resultNumb.display = resultNumb.display.toFixed(4);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 6) {
-			console.log("precision5");
+			// console.log("precision5");
 			resultNumb.display = resultNumb.display.toFixed(5);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 7) {
-			console.log("precision6");
+			// console.log("precision6");
 			resultNumb.display = resultNumb.display.toFixed(6);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 8) {
-			console.log("precision7");
+			// console.log("precision7");
 			resultNumb.display = resultNumb.display.toFixed(7);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 9) {
-			console.log("precision8");
+			// console.log("precision8");
 			resultNumb.display = resultNumb.display.toFixed(8);
 			valueNumbResult.textContent = resultNumb.display;
 		} else if (valueString.textContent.length == 10) {
-			console.log("precision9");
+			// console.log("precision9");
 			resultNumb.display = resultNumb.display.toFixed(9);
 			valueNumbResult.textContent = resultNumb.display;
 		}
@@ -620,7 +616,7 @@ function posNegConvert() {
 		} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
 			butNumbTwo.display = butNumbTwo.display.replace("-", "");
 		}
-		console.log("+");
+		// console.log("+");
 	} else {
 		if (valueDisplay.textContent == "0" && butNumbOne.display == "") {
 			valueDisplay.textContent = "-" + valueDisplay.textContent;
@@ -631,7 +627,7 @@ function posNegConvert() {
 		} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
 			butNumbTwo.display = "-" + butNumbTwo.display;
 		}
-		console.log("-");
+		// console.log("-");
 	}
 }
 
@@ -644,7 +640,7 @@ function percentageConverter() {
 		butNumbOne.display /= percentageValue;
 		butNumbOne.display += "";
 		valueString.textContent = butNumbOne.display;
-		console.log("%1");
+		// console.log("%1");
 	} else if (
 		butNumbOne.display != "" &&
 		butNumbTwo.display != "" &&
@@ -654,7 +650,7 @@ function percentageConverter() {
 		butNumbTwo.display /= percentageValue;
 		butNumbTwo.display += "";
 		valueString.textContent = butNumbTwo.display;
-		console.log("%2");
+		// console.log("%2");
 	} else if (
 		butNumbOne.display == "" &&
 		butNumbTwo.display == "" &&
@@ -662,7 +658,7 @@ function percentageConverter() {
 	) {
 		resultNumb.display /= percentageValue;
 		valueNumbResult.textContent = resultNumb.display;
-		console.log("%3");
+		// console.log("%3");
 	}
 }
 
