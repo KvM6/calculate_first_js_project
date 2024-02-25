@@ -307,7 +307,7 @@ const prepareDOMEvents = () => {
 			percentageConverter();
 		} else if (event.key == "=" || event.key == "Enter") {
 			resultFunction();
-		} else if (event.key == "Escape") {
+		} else if (event.code == "Space") {
 			resetValue();
 		}
 	});
