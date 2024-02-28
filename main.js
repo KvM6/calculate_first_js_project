@@ -173,7 +173,7 @@ const prepareDOMEvents = () => {
 	});
 	calcComma.addEventListener("click", () => {
 		if (valueString.textContent.includes(".")) {
-			// console.log("no comma");
+			console.log("no comma");
 		} else intToFloat();
 	});
 	calcPosNeg.addEventListener("click", () => {
@@ -298,7 +298,7 @@ const prepareDOMEvents = () => {
 			butDivide.displayFunction();
 		} else if (event.key == "," || event.key == ".") {
 			if (valueString.textContent.includes(".")) {
-				// console.log("no comma");
+				console.log("no comma");
 			} else intToFloat();
 		} else if (event.key == "|") {
 			posNegConvert();
@@ -349,18 +349,19 @@ let operand = new buttonFunction("");
 buttonValue.prototype.displayValue = function () {
 	if (this.display == "0" && valueString.textContent == "") {
 		valueDisplay.textContent = "0";
-		// console.log("ejej");
+		console.log("ejej");
 	} else if (
 		valueString.textContent.length < 10
 	) {
 		valueString.textContent += this.display;
 		valueDisplay.classList.add("opacity-0");
-		// console.log("length work");
+		console.log("length work");
 	}
-	// console.log("else");
+	console.log("else");
 };
 buttonValue.prototype.getNumb = function () {
-	if (this.display == "0" && butNumbOne.display == 0) {
+	if (this.display == "0" && butNumbOne.display == '') {
+		butNumbOne.display = '0'
 	} else if (butNumbOne.display.length < 10) {
 		butNumbOne.display += this.display;
 	}
@@ -369,8 +370,8 @@ buttonValue.prototype.getNumb = function () {
 		butNumbOne.display = "-" + butNumbOne.display;
 		valueDisplay.textContent = "";
 	}
-	// console.log(butNumbOne.display);
-	// console.log("numb1");
+	console.log(butNumbOne.display);
+	console.log("numb1");
 };
 buttonValue.prototype.getNumbTwo = function () {
 	// == 0 earlier
@@ -378,8 +379,8 @@ buttonValue.prototype.getNumbTwo = function () {
 	} else if (butNumbTwo.display.length < 10) {
 		butNumbTwo.display += this.display;
 	}
-	// console.log(butNumbTwo.display);
-	// console.log("numb2");
+	console.log(butNumbTwo.display);
+	console.log("numb2");
 };
 
 buttonFunction.prototype.displayFunction = function () {
@@ -393,24 +394,24 @@ buttonFunction.prototype.displayFunction = function () {
 buttonFunction.prototype.setoperand = function () {
 	if (butNumbOne.display != "" || resultNumb.display != "") {
 		operand.char = this.char;
-		// console.log(operand.char);
+		console.log(operand.char);
 	}
 };
 
 function resultFunction() {
 	if (butNumbOne.display.includes(".")) {
 		if (butNumbOne.display == 0) {
-			// console.log(butNumbOne.display);
+			console.log(butNumbOne.display);
 		} else butNumbOne.display = parseFloat(butNumbOne.display);
-		// console.log("float");
+		console.log("float");
 	} else if (butNumbOne.display == "") {
 	} else butNumbOne.display = parseInt(butNumbOne.display);
 
 	if (butNumbTwo.display.includes(".")) {
 		if (butNumbTwo.display == 0) {
-			// console.log(butNumbTwo.display);
+			console.log(butNumbTwo.display);
 		} else butNumbTwo.display = parseFloat(butNumbTwo.display);
-		// console.log("float2");
+		console.log("float2");
 	} else if (butNumbTwo.display > "") {
 		butNumbTwo.display = parseInt(butNumbTwo.display);
 	}
@@ -425,7 +426,7 @@ function resultFunction() {
 		} else if (operand.char == "/") {
 			resultNumb.display = butNumbOne.display / butNumbTwo.display;
 		}
-		// console.log("result1");
+		console.log("result1");
 	} else if (
 		resultNumb.display != "" &&
 		butNumbOne.display == "" &&
@@ -442,14 +443,25 @@ function resultFunction() {
 		} else if (operand.char == "") {
 			resultNumb.display = butNumbTwo.display;
 		}
-		// console.log("result2");
+		console.log("result2");
 	} else if (butNumbOne.display != "" && butNumbTwo.display == "") {
 		resultNumb.display = butNumbOne.display;
-		// console.log("result3");
+		console.log("result3");
+	} else if (butNumbOne.display == 0 && butNumbTwo.display != "") {
+		if (operand.char == "+") {
+			resultNumb.display = butNumbOne.display + butNumbTwo.display;
+		} else if (operand.char == "-") {
+			resultNumb.display = butNumbOne.display - butNumbTwo.display;
+		} else if (operand.char == "x") {
+			resultNumb.display = butNumbOne.display * butNumbTwo.display;
+		} else if (operand.char == "/") {
+			resultNumb.display = butNumbOne.display / butNumbTwo.display;
+		}
+		console.log("result0");
 	}
 
 	valueNumbResult.textContent = resultNumb.display;
-	// console.log(resultNumb.display);
+	console.log(resultNumb.display);
 
 	if (valueNumbResult.textContent.includes(".")) {
 		floatPrecisionOne();
@@ -616,7 +628,7 @@ function posNegConvert() {
 		} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
 			butNumbTwo.display = butNumbTwo.display.replace("-", "");
 		}
-		// console.log("+");
+		console.log("+");
 	} else {
 		if (valueDisplay.textContent == "0" && butNumbOne.display == "") {
 			valueDisplay.textContent = "-" + valueDisplay.textContent;
@@ -627,7 +639,7 @@ function posNegConvert() {
 		} else if (butNumbOne.display != "" && butNumbTwo.display != "") {
 			butNumbTwo.display = "-" + butNumbTwo.display;
 		}
-		// console.log("-");
+		console.log("-");
 	}
 }
 
@@ -640,7 +652,7 @@ function percentageConverter() {
 		butNumbOne.display /= percentageValue;
 		butNumbOne.display += "";
 		valueString.textContent = butNumbOne.display;
-		// console.log("%1");
+		console.log("%1");
 	} else if (
 		butNumbOne.display != "" &&
 		butNumbTwo.display != "" &&
@@ -650,7 +662,7 @@ function percentageConverter() {
 		butNumbTwo.display /= percentageValue;
 		butNumbTwo.display += "";
 		valueString.textContent = butNumbTwo.display;
-		// console.log("%2");
+		console.log("%2");
 	} else if (
 		butNumbOne.display == "" &&
 		butNumbTwo.display == "" &&
@@ -658,7 +670,7 @@ function percentageConverter() {
 	) {
 		resultNumb.display /= percentageValue;
 		valueNumbResult.textContent = resultNumb.display;
-		// console.log("%3");
+		console.log("%3");
 	}
 }
 
