@@ -180,7 +180,9 @@ const prepareDOMEvents = () => {
 		posNegConvert();
 	});
 	calcPercentage.addEventListener("click", () => {
-		percentageConverter();
+		if (butNumbOne.display != '' && butNumbOne.display > 0) {
+			percentageConverter();
+		}
 	});
 	calcEqual.addEventListener("click", () => {
 		// if (butNumbOne.display > "" || butNumbTwo.display > "") {
